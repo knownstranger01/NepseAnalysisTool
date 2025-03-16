@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नेप्से स्टक मार्केट ट्र्याकर | NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">होम</a></li>
+                    <li><a href="companies.html">कम्पनीहरू</a></li>
+                    <li><a href="analysis.html">विश्लेषण</a></li>
+                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
+                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
+                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne" selected>नेपाली</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">लगइन</a>
+                <a href="signup.html" class="btn btn-primary">साइनअप</a>
+            </div>
+            <div class="user-profile">
+                <button class="profile-button">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="user-name">प्रयोगकर्ता</span>
+                </button>
+                <div class="profile-dropdown">
+                    <ul>
+                        <li>
+                            <a href="portfolio.html">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="lang-ne">मेरो पोर्टफोलियो</span>
+                                <span class="lang-en">My Portfolio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="watchlist.html">
+                                <i class="fas fa-eye"></i>
+                                <span class="lang-ne">मेरो वाचलिस्ट</span>
+                                <span class="lang-en">My Watchlist</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-cog"></i>
+                                <span class="lang-ne">सेटिङ्स</span>
+                                <span class="lang-en">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button class="logout-button">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span class="lang-ne">लगआउट</span>
+                                <span class="lang-en">Logout</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="lang-ne">नेपाल स्टक एक्सचेन्ज (नेप्से) लाइभ ट्र्याकर</h1>
+                <h1 class="lang-en">Nepal Stock Exchange (NEPSE) Live Tracker</h1>
+                <p class="lang-ne">नेपालको शेयर बजारको वास्तविक समयको मूल्य, चार्ट र विश्लेषण प्राप्त गर्नुहोस्</p>
+                <p class="lang-en">Get real-time prices, charts, and analysis of Nepal's stock market</p>
+                <div class="hero-buttons">
+                    <a href="companies.html" class="btn btn-primary">
+                        <span class="lang-ne">कम्पनीहरू हेर्नुहोस्</span>
+                        <span class="lang-en">View Companies</span>
+                    </a>
+                    <a href="analysis.html" class="btn btn-outline">
+                        <span class="lang-ne">बजार विश्लेषण</span>
+                        <span class="lang-en">Market Analysis</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-image.png" alt="NEPSE Stock Chart">
+            </div>
+        </div>
+    </section>
+
+    <section class="market-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="lang-ne">बजार अवलोकन</h2>
+                <h2 class="lang-en">Market Overview</h2>
+                <p class="lang-ne">नेप्से इन्डेक्स र प्रमुख सूचकहरू</p>
+                <p class="lang-en">NEPSE Index and Key Indicators</p>
+            </div>
+            <div class="market-data">
+                <div class="market-index">
+                    <div class="index-value">
+                        <h3 class="lang-ne">नेप्से इन्डेक्स</h3>
+                        <h3 class="lang-en">NEPSE Index</h3>
+                        <div class="value" id="nepse-index">2,100.45</div>
+                        <div class="change positive" id="nepse-change">+15.67 (+0.75%)</div>
+                    </div>
+                    <div class="index-chart" id="nepse-chart">
+                        <!-- Chart will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                <div class="market-summary">
+                    <div class="summary-card">
+                        <h4 class="lang-ne">कारोबार रकम</h4>
+                        <h4 class="lang-en">Turnover</h4>
+                        <div class="value" id="turnover-value">Rs. 2.5 Bn</div>
+                        <div class="change positive" id="turnover-change">+12.5%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4 class="lang-ne">कारोबार भएका शेयर</h4>
+                        <h4 class="lang-en">Traded Shares</h4>
+                        <div class="value" id="traded-shares">7.2 M</div>
+                        <div class="change positive" id="traded-shares-change">+8.3%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4 class="lang-ne">कारोबार संख्या</h4>
+                        <h4 class="lang-en">Transactions</h4>
+                        <div class="value" id="transactions">45,678</div>
+                        <div class="change positive" id="transactions-change">+5.2%</div>
+                    </div>
+                    <div class="summary-card">
+                        <h4 class="lang-ne">बजार पूँजीकरण</h4>
+                        <h4 class="lang-en">Market Cap</h4>
+                        <div class="value" id="market-cap">Rs. 3.2 Tn</div>
+                        <div class="change positive" id="market-cap-change">+0.8%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="market-sectors">
+                <h3 class="lang-ne">क्षेत्रगत सूचकांक</h3>
+                <h3 class="lang-en">Sectoral Indices</h3>
+                <div class="sector-cards" id="sector-cards">
+                    <!-- Sector cards will be inserted here by JavaScript -->
+                    <div class="sector-card">
+                        <h4>Banking</h4>
+                        <div class="value">1,850.25</div>
+                        <div class="change positive">+1.2%</div>
+                    </div>
+                    <div class="sector-card">
+                        <h4>Hydropower</h4>
+                        <div class="value">2,450.80</div>
+                        <div class="change positive">+2.5%</div>
+                    </div>
+                    <div class="sector-card">
+                        <h4>Insurance</h4>
+                        <div class="value">9,120.15</div>
+                        <div class="change negative">-0.8%</div>
+                    </div>
+                    <div class="sector-card">
+                        <h4>Finance</h4>
+                        <div class="value">780.45</div>
+                        <div class="change positive">+0.5%</div>
+                    </div>
+                    <div class="sector-card">
+                        <h4>Development Bank</h4>
+                        <div class="value">2,150.30</div>
+                        <div class="change positive">+1.8%</div>
+                    </div>
+                    <div class="sector-card">
+                        <h4>Manufacturing</h4>
+                        <div class="value">3,450.75</div>
+                        <div class="change negative">-0.3%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="last-updated">
+                <span class="lang-ne">अन्तिम अपडेट:</span>
+                <span class="lang-en">Last Updated:</span>
+                <span id="last-updated-time">2023-08-15 15:45:30</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="top-gainers-losers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="lang-ne">शीर्ष गेनर्स र लुजर्स</h2>
+                <h2 class="lang-en">Top Gainers & Losers</h2>
+                <p class="lang-ne">आजका उत्कृष्ट र सबैभन्दा खराब प्रदर्शन गर्ने शेयरहरू</p>
+                <p class="lang-en">Today's best and worst performing stocks</p>
+            </div>
+            <div class="gainers-losers-tabs">
+                <button class="tab-button active" data-tab="gainers">
+                    <span class="lang-ne">शीर्ष गेनर्स</span>
+                    <span class="lang-en">Top Gainers</span>
+                </button>
+                <button class="tab-button" data-tab="losers">
+                    <span class="lang-ne">शीर्ष लुजर्स</span>
+                    <span class="lang-en">Top Losers</span>
+                </button>
+            </div>
+            <div class="gainers-losers-content">
+                <div class="tab-content active" id="gainers">
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th class="lang-ne">सिम्बोल</th>
+                                <th class="lang-en">Symbol</th>
+                                <th class="lang-ne">कम्पनी</th>
+                                <th class="lang-en">Company</th>
+                                <th class="lang-ne">LTP</th>
+                                <th class="lang-en">LTP</th>
+                                <th class="lang-ne">परिवर्तन</th>
+                                <th class="lang-en">Change</th>
+                                <th class="lang-ne">% परिवर्तन</th>
+                                <th class="lang-en">% Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-gainers-body">
+                            <!-- Data will be inserted here by JavaScript -->
+                            <tr>
+                                <td>UPPER</td>
+                                <td>Upper Tamakoshi Hydropower Ltd.</td>
+                                <td>Rs. 450</td>
+                                <td>+40.5</td>
+                                <td class="positive">+9.89%</td>
+                            </tr>
+                            <tr>
+                                <td>CHCL</td>
+                                <td>Chilime Hydropower Company Ltd.</td>
+                                <td>Rs. 520</td>
+                                <td>+36.8</td>
+                                <td class="positive">+7.62%</td>
+                            </tr>
+                            <tr>
+                                <td>NABIL</td>
+                                <td>Nabil Bank Ltd.</td>
+                                <td>Rs. 1,250</td>
+                                <td>+75.5</td>
+                                <td class="positive">+6.43%</td>
+                            </tr>
+                            <tr>
+                                <td>NICA</td>
+                                <td>NIC Asia Bank Ltd.</td>
+                                <td>Rs. 880</td>
+                                <td>+48.2</td>
+                                <td class="positive">+5.79%</td>
+                            </tr>
+                            <tr>
+                                <td>SBI</td>
+                                <td>Nepal SBI Bank Ltd.</td>
+                                <td>Rs. 380</td>
+                                <td>+19.5</td>
+                                <td class="positive">+5.41%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-content" id="losers">
+                    <table class="stock-table">
+                        <thead>
+                            <tr>
+                                <th class="lang-ne">सिम्बोल</th>
+                                <th class="lang-en">Symbol</th>
+                                <th class="lang-ne">कम्पनी</th>
+                                <th class="lang-en">Company</th>
+                                <th class="lang-ne">LTP</th>
+                                <th class="lang-en">LTP</th>
+                                <th class="lang-ne">परिवर्तन</th>
+                                <th class="lang-en">Change</th>
+                                <th class="lang-ne">% परिवर्तन</th>
+                                <th class="lang-en">% Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-losers-body">
+                            <!-- Data will be inserted here by JavaScript -->
+                            <tr>
+                                <td>NLIC</td>
+                                <td>Nepal Life Insurance Co. Ltd.</td>
+                                <td>Rs. 1,150</td>
+                                <td>-92.5</td>
+                                <td class="negative">-7.45%</td>
+                            </tr>
+                            <tr>
+                                <td>PLIC</td>
+                                <td>Prime Life Insurance Co. Ltd.</td>
+                                <td>Rs. 780</td>
+                                <td>-58.2</td>
+                                <td class="negative">-6.94%</td>
+                            </tr>
+                            <tr>
+                                <td>GBIME</td>
+                                <td>Global IME Bank Ltd.</td>
+                                <td>Rs. 340</td>
+                                <td>-22.5</td>
+                                <td class="negative">-6.21%</td>
+                            </tr>
+                            <tr>
+                                <td>PRVU</td>
+                                <td>Prabhu Bank Ltd.</td>
+                                <td>Rs. 310</td>
+                                <td>-18.8</td>
+                                <td class="negative">-5.72%</td>
+                            </tr>
+                            <tr>
+                                <td>ADBL</td>
+                                <td>Agricultural Development Bank Ltd.</td>
+                                <td>Rs. 420</td>
+                                <td>-22.4</td>
+                                <td class="negative">-5.06%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="lang-ne">हाम्रा विशेषताहरू</h2>
+                <h2 class="lang-en">Our Features</h2>
+                <p class="lang-ne">नेप्से ट्र्याकरले प्रदान गर्ने मुख्य सुविधाहरू</p>
+                <p class="lang-en">Key features provided by NEPSE Tracker</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="lang-ne">लाइभ मूल्य अपडेट</h3>
+                    <h3 class="lang-en">Live Price Updates</h3>
+                    <p class="lang-ne">नेप्सेमा सूचीबद्ध सबै कम्पनीहरूको वास्तविक समयको मूल्य अपडेट प्राप्त गर्नुहोस्</p>
+                    <p class="lang-en">Get real-time price updates for all companies listed on NEPSE</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="lang-ne">कम्पनी खोज</h3>
+                    <h3 class="lang-en">Company Search</h3>
+                    <p class="lang-ne">नाम, सिम्बोल वा क्षेत्र अनुसार कम्पनीहरू खोज्नुहोस् र तिनीहरूको विवरण हेर्नुहोस्</p>
+                    <p class="lang-en">Search companies by name, symbol, or sector and view their details</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="lang-ne">वाचलिस्ट</h3>
+                    <h3 class="lang-en">Watchlist</h3>
+                    <p class="lang-ne">आफ्नो वाचलिस्ट सिर्जना गर्नुहोस् र आफूलाई मन पर्ने शेयरहरू ट्र्याक गर्नुहोस्</p>
+                    <p class="lang-en">Create your watchlist and track your favorite stocks</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="lang-ne">पोर्टफोलियो व्यवस्थापन</h3>
+                    <h3 class="lang-en">Portfolio Management</h3>
+                    <p class="lang-ne">आफ्नो शेयर पोर्टफोलियो व्यवस्थापन गर्नुहोस् र प्रदर्शन ट्र्याक गर्नुहोस्</p>
+                    <p class="lang-en">Manage your stock portfolio and track performance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="lang-ne">मूल्य अलर्ट</h3>
+                    <h3 class="lang-en">Price Alerts</h3>
+                    <p class="lang-ne">मूल्य अलर्ट सेट गर्नुहोस् र शेयर मूल्य परिवर्तन हुँदा सूचित हुनुहोस्</p>
+                    <p class="lang-en">Set price alerts and get notified when stock prices change</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="lang-ne">बजार विश्लेषण</h3>
+                    <h3 class="lang-en">Market Analysis</h3>
+                    <p class="lang-ne">विस्तृत बजार विश्लेषण र प्रवृत्ति रिपोर्ट हेर्नुहोस्</p>
+                    <p class="lang-en">View detailed market analysis and trend reports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="lang-ne">आज नै शुरु गर्नुहोस्</h2>
+                <h2 class="lang-en">Get Started Today</h2>
+                <p class="lang-ne">नेप्से ट्र्याकरमा साइनअप गर्नुहोस् र नेपालको शेयर बजारको पूर्ण क्षमता अनलक गर्नुहोस्</p>
+                <p class="lang-en">Sign up for NEPSE Tracker and unlock the full potential of Nepal's stock market</p>
+                <a href="signup.html" class="btn btn-primary">
+                    <span class="lang-ne">निःशुल्क खाता खोल्नुहोस्</span>
+                    <span class="lang-en">Create Free Account</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <p>NEPSE Tracker</p>
+                </div>
+                <div class="footer-links">
+                    <h3>
+                        <span class="lang-ne">लिंकहरू</span>
+                        <span class="lang-en">Links</span>
+                    </h3>
+                    <ul>
+                        <li><a href="index.html">
+                            <span class="lang-ne">होम</span>
+                            <span class="lang-en">Home</span>
+                        </a></li>
+                        <li><a href="companies.html">
+                            <span class="lang-ne">कम्पनीहरू</span>
+                            <span class="lang-en">Companies</span>
+                        </a></li>
+                        <li><a href="analysis.html">
+                            <span class="lang-ne">विश्लेषण</span>
+                            <span class="lang-en">Analysis</span>
+                        </a></li>
+                        <li><a href="watchlist.html">
+                            <span class="lang-ne">वाचलिस्ट</span>
+                            <span class="lang-en">Watchlist</span>
+                        </a></li>
+                        <li><a href="about.html">
+                            <span class="lang-ne">हाम्रो बारेमा</span>
+                            <span class="lang-en">About</span>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>
+                        <span class="lang-ne">सम्पर्क</span>
+                        <span class="lang-en">Contact</span>
+                    </h3>
+                    <p><i class="fas fa-envelope"></i> info@nepsetracker.com</p>
+                    <p><i class="fas fa-phone"></i> +977 9800000000</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. 
+                    <span class="lang-ne">सर्वाधिकार सुरक्षित।</span>
+                    <span class="lang-en">All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/market_overview.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html> 

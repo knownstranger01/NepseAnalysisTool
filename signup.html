@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>साइनअप - नेप्से स्टक मार्केट ट्र्याकर | Signup - NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="companies.html">कम्पनीहरू</a></li>
+                    <li><a href="analysis.html">विश्लेषण</a></li>
+                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
+                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
+                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    <li class="language-switcher">
+                        <select id="language-select">
+                            <option value="ne" selected>नेपाली</option>
+                            <option value="en">English</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2 class="lang-ne">खाता बनाउनुहोस्</h2>
+                    <h2 class="lang-en">Create an Account</h2>
+                    <p class="lang-ne">आफ्नो पोर्टफोलियो र वाचलिस्ट व्यवस्थापन गर्न खाता बनाउनुहोस्</p>
+                    <p class="lang-en">Create an account to manage your portfolio and watchlist</p>
+                </div>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="email-signup">
+                        <span class="lang-ne">इमेल</span>
+                        <span class="lang-en">Email</span>
+                    </button>
+                    <button class="auth-tab" data-tab="mobile-signup">
+                        <span class="lang-ne">मोबाइल</span>
+                        <span class="lang-en">Mobile</span>
+                    </button>
+                </div>
+                
+                <div class="auth-forms">
+                    <!-- इमेल साइनअप फर्म -->
+                    <form id="email-signup-form" class="auth-form active">
+                        <div class="form-group">
+                            <label for="fullname-email">
+                                <span class="lang-ne">पूरा नाम</span>
+                                <span class="lang-en">Full Name</span>
+                            </label>
+                            <input type="text" id="fullname-email" name="fullname" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email-signup">
+                                <span class="lang-ne">इमेल ठेगाना</span>
+                                <span class="lang-en">Email Address</span>
+                            </label>
+                            <input type="email" id="email-signup" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password-signup">
+                                <span class="lang-ne">पासवर्ड</span>
+                                <span class="lang-en">Password</span>
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="password-signup" name="password" required>
+                                <button type="button" class="toggle-password">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-meter">
+                                    <div class="strength-meter-fill" data-strength="0"></div>
+                                </div>
+                                <div class="strength-text">
+                                    <span class="lang-ne">पासवर्ड बलियो छैन</span>
+                                    <span class="lang-en">Password is weak</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm-password">
+                                <span class="lang-ne">पासवर्ड पुष्टि गर्नुहोस्</span>
+                                <span class="lang-en">Confirm Password</span>
+                            </label>
+                            <div class="password-input">
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                                <button type="button" class="toggle-password">
+                                    <i class="far fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group terms">
+                            <input type="checkbox" id="terms-email" name="terms" required>
+                            <label for="terms-email">
+                                <span class="lang-ne">म <a href="#">नियम र सर्तहरू</a> स्वीकार गर्दछु</span>
+                                <span class="lang-en">I accept the <a href="#">Terms and Conditions</a></span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span class="lang-ne">खाता बनाउनुहोस्</span>
+                            <span class="lang-en">Create Account</span>
+                        </button>
+                    </form>
+                    
+                    <!-- मोबाइल साइनअप फर्म -->
+                    <form id="mobile-signup-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="fullname-mobile">
+                                <span class="lang-ne">पूरा नाम</span>
+                                <span class="lang-en">Full Name</span>
+                            </label>
+                            <input type="text" id="fullname-mobile" name="fullname" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile-signup">
+                                <span class="lang-ne">मोबाइल नम्बर</span>
+                                <span class="lang-en">Mobile Number</span>
+                            </label>
+                            <input type="tel" id="mobile-signup" name="mobile" pattern="[0-9]{10}" required>
+                            <small class="form-text">
+                                <span class="lang-ne">उदाहरण: 98XXXXXXXX</span>
+                                <span class="lang-en">Example: 98XXXXXXXX</span>
+                            </small>
+                        </div>
+                        
+                        <div class="form-group terms">
+                            <input type="checkbox" id="terms-mobile" name="terms" required>
+                            <label for="terms-mobile">
+                                <span class="lang-ne">म <a href="#">नियम र सर्तहरू</a> स्वीकार गर्दछु</span>
+                                <span class="lang-en">I accept the <a href="#">Terms and Conditions</a></span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span class="lang-ne">OTP पठाउनुहोस्</span>
+                            <span class="lang-en">Send OTP</span>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="social-login">
+                    <p>
+                        <span class="lang-ne">वा यसको साथ साइनअप गर्नुहोस्</span>
+                        <span class="lang-en">Or sign up with</span>
+                    </p>
+                    <button class="btn btn-google">
+                        <i class="fab fa-google"></i>
+                        <span class="lang-ne">Google संग साइनअप गर्नुहोस्</span>
+                        <span class="lang-en">Sign up with Google</span>
+                    </button>
+                </div>
+                
+                <div class="auth-footer">
+                    <p>
+                        <span class="lang-ne">पहिले नै खाता छ?</span>
+                        <span class="lang-en">Already have an account?</span>
+                        <a href="login.html">
+                            <span class="lang-ne">लगइन गर्नुहोस्</span>
+                            <span class="lang-en">Login</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <p>NEPSE Tracker</p>
+                </div>
+                <div class="footer-links">
+                    <h3>
+                        <span class="lang-ne">लिंकहरू</span>
+                        <span class="lang-en">Links</span>
+                    </h3>
+                    <ul>
+                        <li><a href="index.html">
+                            <span class="lang-ne">होम</span>
+                            <span class="lang-en">Home</span>
+                        </a></li>
+                        <li><a href="companies.html">
+                            <span class="lang-ne">कम्पनीहरू</span>
+                            <span class="lang-en">Companies</span>
+                        </a></li>
+                        <li><a href="analysis.html">
+                            <span class="lang-ne">विश्लेषण</span>
+                            <span class="lang-en">Analysis</span>
+                        </a></li>
+                        <li><a href="watchlist.html">
+                            <span class="lang-ne">वाचलिस्ट</span>
+                            <span class="lang-en">Watchlist</span>
+                        </a></li>
+                        <li><a href="about.html">
+                            <span class="lang-ne">हाम्रो बारेमा</span>
+                            <span class="lang-en">About</span>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>
+                        <span class="lang-ne">सम्पर्क</span>
+                        <span class="lang-en">Contact</span>
+                    </h3>
+                    <p><i class="fas fa-envelope"></i> info@nepsetracker.com</p>
+                    <p><i class="fas fa-phone"></i> +977 9800000000</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. 
+                    <span class="lang-ne">सर्वाधिकार सुरक्षित।</span>
+                    <span class="lang-en">All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

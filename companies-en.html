@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listed Companies - NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index-en.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="companies-en.html" class="active">Companies</a></li>
+                    <li><a href="analysis-en.html">Analysis</a></li>
+                    <li><a href="watchlist-en.html">Watchlist</a></li>
+                    <li><a href="portfolio-en.html">Portfolio</a></li>
+                    <li><a href="about-en.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne">नेपाली</option>
+                    <option value="en" selected>English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login-en.html" class="btn btn-outline">Login</a>
+                <a href="signup-en.html" class="btn btn-primary">Signup</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Companies</h1>
+            <p>Information about companies listed on the NEPSE market</p>
+        </div>
+    </section>
+
+    <section class="top-gainers-losers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Top Gainers & Losers</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="gainers">Top Gainers</button>
+                    <button class="tab-btn" data-tab="losers">Top Losers</button>
+                </div>
+            </div>
+            
+            <div class="tab-content active" id="gainers">
+                <div class="stock-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company</th>
+                                <th>Price (Rs.)</th>
+                                <th>Change (%)</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="gainers-table">
+                            <!-- Will be filled by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="losers">
+                <div class="stock-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company</th>
+                                <th>Price (Rs.)</th>
+                                <th>Change (%)</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="losers-table">
+                            <!-- Will be filled by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="all-companies">
+        <div class="container">
+            <h2 class="section-title">All Companies</h2>
+            <div class="search-filter">
+                <input type="text" id="company-search" placeholder="Search company...">
+                <select id="sector-filter">
+                    <option value="">All Sectors</option>
+                    <option value="banking">Banking</option>
+                    <option value="hydropower">Hydropower</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="telecom">Telecom</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="stock-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Company</th>
+                            <th>Sector</th>
+                            <th>Price (Rs.)</th>
+                            <th>Change (%)</th>
+                            <th>Analysis</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-companies-table">
+                        <!-- Will be filled by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>NEPSE Tracker</h2>
+                    <p>Your trusted companion for Nepal's stock market</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="companies-en.html">Companies</a></li>
+                        <li><a href="analysis-en.html">Analysis</a></li>
+                        <li><a href="about-en.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/companies.js"></script>
+</body>
+</html> 

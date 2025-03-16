@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index-en.html">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index-en.html" class="active">Home</a></li>
+                    <li><a href="companies-en.html">Companies</a></li>
+                    <li><a href="analysis-en.html">Analysis</a></li>
+                    <li><a href="watchlist-en.html">Watchlist</a></li>
+                    <li><a href="portfolio-en.html">Portfolio</a></li>
+                    <li><a href="about-en.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne">नेपाली</option>
+                    <option value="en" selected>English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login-en.html" class="btn btn-outline">Login</a>
+                <a href="signup-en.html" class="btn btn-primary">Signup</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>NEPSE Stock Market Real-time Tracking</h2>
+                <p>Get the latest updates, technical analysis, and recommendations for Nepal's stock market</p>
+                <div class="search-box">
+                    <input type="text" placeholder="Search company...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="market-overview">
+        <div class="container">
+            <h2 class="section-title">Market Overview</h2>
+            <div class="market-stats">
+                <div class="stat-card">
+                    <h3>NEPSE Index</h3>
+                    <p class="value" id="nepse-index">2,100.45</p>
+                    <p class="change positive"><i class="fas fa-arrow-up"></i> +15.23 (0.73%)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Trading Amount</h3>
+                    <p class="value" id="trading-volume">Rs. 2.5 Billion</p>
+                    <p class="change negative"><i class="fas fa-arrow-down"></i> -0.3 Billion (-10.71%)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Traded Shares</h3>
+                    <p class="value" id="traded-shares">7.2 Million</p>
+                    <p class="change positive"><i class="fas fa-arrow-up"></i> +0.5 Million (7.46%)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Number of Trades</h3>
+                    <p class="value" id="transaction-count">45,678</p>
+                    <p class="change positive"><i class="fas fa-arrow-up"></i> +3,245 (7.65%)</p>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="nepse-chart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-links">
+        <div class="container">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="links-container">
+                <div class="link-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Companies</h3>
+                    <p>View the list of top gaining and losing companies</p>
+                    <a href="companies-en.html" class="btn">View</a>
+                </div>
+                <div class="link-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Technical Analysis</h3>
+                    <p>View technical analysis and recommendations for companies</p>
+                    <a href="analysis-en.html" class="btn">View</a>
+                </div>
+                <div class="link-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>About Us</h3>
+                    <p>Learn more about us</p>
+                    <a href="about-en.html" class="btn">View</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>NEPSE Tracker</h2>
+                    <p>Your trusted companion for Nepal's stock market</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="companies-en.html">Companies</a></li>
+                        <li><a href="analysis-en.html">Analysis</a></li>
+                        <li><a href="about-en.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Watchlist - NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index-en.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="companies-en.html">Companies</a></li>
+                    <li><a href="analysis-en.html">Analysis</a></li>
+                    <li><a href="watchlist-en.html" class="active">Watchlist</a></li>
+                    <li><a href="portfolio-en.html">Portfolio</a></li>
+                    <li><a href="about-en.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne">नेपाली</option>
+                    <option value="en" selected>English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Signup</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>My Watchlist</h1>
+            <p>Organize the stocks you want to track here</p>
+        </div>
+    </section>
+
+    <section class="watchlist-section">
+        <div class="container">
+            <div class="watchlist-header">
+                <div class="watchlist-actions">
+                    <button id="add-to-watchlist" class="btn primary-btn">
+                        <i class="fas fa-plus"></i> Add New Stock
+                    </button>
+                    <button id="refresh-watchlist" class="btn secondary-btn">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                <div class="watchlist-filter">
+                    <input type="text" id="watchlist-search" placeholder="Search stocks...">
+                    <select id="watchlist-sort">
+                        <option value="symbol">Sort by Symbol</option>
+                        <option value="change">Sort by Change</option>
+                        <option value="price">Sort by Price</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="watchlist-content">
+                <div id="watchlist-login-message" style="display: none;">
+                    <div class="login-required-message">
+                        <i class="fas fa-lock"></i>
+                        <h3>Login to view watchlist</h3>
+                        <p>Login to manage your watchlist and track stocks</p>
+                        <a href="login.html" class="btn primary-btn">Login</a>
+                        <p class="signup-text">Don't have an account? <a href="signup.html">Sign up</a></p>
+                    </div>
+                </div>
+
+                <div id="watchlist-table-container">
+                    <div class="table-responsive">
+                        <table class="watchlist-table" id="watchlist-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Company</th>
+                                    <th>Last Price</th>
+                                    <th>Change</th>
+                                    <th>Change %</th>
+                                    <th>High</th>
+                                    <th>Low</th>
+                                    <th>Volume</th>
+                                    <th>Notes</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="watchlist-table-body">
+                                <!-- Data will be loaded by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="empty-watchlist-message" style="display: none;">
+                    <div class="empty-state">
+                        <i class="far fa-star"></i>
+                        <h3>Your watchlist is empty</h3>
+                        <p>Start adding stocks from the Companies page</p>
+                        <a href="companies-en.html" class="btn primary-btn">View Companies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Note Modal -->
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Stock Note</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="note-form">
+                    <input type="hidden" id="note-symbol">
+                    <div class="form-group">
+                        <label for="note-text">Note:</label>
+                        <textarea id="note-text" rows="4" placeholder="Write a note about this stock..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" id="cancel-note">Cancel</button>
+                        <button type="submit" class="btn primary-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Stock Modal -->
+    <div class="modal" id="add-stock-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Stock to Watchlist</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-stock-form">
+                    <div class="form-group">
+                        <label for="stock-symbol">Stock Symbol:</label>
+                        <select id="stock-symbol" required>
+                            <option value="">Select a stock...</option>
+                            <!-- Options will be loaded by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock-note">Note (Optional):</label>
+                        <textarea id="stock-note" rows="3" placeholder="Write a note about this stock..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" id="cancel-add-stock">Cancel</button>
+                        <button type="submit" class="btn primary-btn">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>NEPSE Tracker</h2>
+                    <p>Your trusted companion for Nepal's stock market</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="companies-en.html">Companies</a></li>
+                        <li><a href="analysis-en.html">Analysis</a></li>
+                        <li><a href="watchlist-en.html">My Watchlist</a></li>
+                        <li><a href="about-en.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Files -->
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/watchlist.js"></script>
+</body>
+</html> 

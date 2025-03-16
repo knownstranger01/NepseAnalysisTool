@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरो पोर्टफोलियो - नेप्से स्टक मार्केट ट्र्याकर | My Portfolio - NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="companies.html">कम्पनीहरू</a></li>
+                    <li><a href="analysis.html">विश्लेषण</a></li>
+                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
+                    <li><a href="portfolio.html" class="active">पोर्टफोलियो</a></li>
+                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    <li class="language-switcher">
+                        <select id="language-select">
+                            <option value="ne" selected>नेपाली</option>
+                            <option value="en">English</option>
+                        </select>
+                    </li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">
+                    <span class="lang-ne">लगइन</span>
+                    <span class="lang-en">Login</span>
+                </a>
+                <a href="signup.html" class="btn btn-primary">
+                    <span class="lang-ne">साइनअप</span>
+                    <span class="lang-en">Signup</span>
+                </a>
+            </div>
+            <div class="user-profile">
+                <button class="profile-button">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="user-name">प्रयोगकर्ता</span>
+                </button>
+                <div class="profile-dropdown">
+                    <ul>
+                        <li>
+                            <a href="portfolio.html" class="active">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="lang-ne">मेरो पोर्टफोलियो</span>
+                                <span class="lang-en">My Portfolio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="watchlist.html">
+                                <i class="fas fa-eye"></i>
+                                <span class="lang-ne">मेरो वाचलिस्ट</span>
+                                <span class="lang-en">My Watchlist</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-cog"></i>
+                                <span class="lang-ne">सेटिङ्स</span>
+                                <span class="lang-en">Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button class="logout-button">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span class="lang-ne">लगआउट</span>
+                                <span class="lang-en">Logout</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne" selected>नेपाली</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="lang-ne">मेरो पोर्टफोलियो</h1>
+                    <h1 class="lang-en">My Portfolio</h1>
+                    <p class="lang-ne">आफ्नो शेयर पोर्टफोलियो व्यवस्थापन गर्नुहोस् र प्रदर्शन ट्र्याक गर्नुहोस्</p>
+                    <p class="lang-en">Manage your stock portfolio and track performance</p>
+                </div>
+
+                <div id="portfolio-login-message" class="login-message">
+                    <div class="message-content">
+                        <i class="fas fa-lock"></i>
+                        <h3 class="lang-ne">पोर्टफोलियो हेर्न लगइन गर्नुहोस्</h3>
+                        <h3 class="lang-en">Login to view your portfolio</h3>
+                        <p class="lang-ne">आफ्नो शेयर पोर्टफोलियो व्यवस्थापन गर्न र प्रदर्शन ट्र्याक गर्न लगइन गर्नुहोस्</p>
+                        <p class="lang-en">Login to manage your stock portfolio and track performance</p>
+                        <div class="message-buttons">
+                            <a href="login.html" class="btn btn-primary">
+                                <span class="lang-ne">लगइन गर्नुहोस्</span>
+                                <span class="lang-en">Login</span>
+                            </a>
+                            <a href="signup.html" class="btn btn-outline">
+                                <span class="lang-ne">साइनअप गर्नुहोस्</span>
+                                <span class="lang-en">Sign Up</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="portfolio-container" class="portfolio-container">
+                    <div class="portfolio-overview">
+                        <div class="portfolio-summary">
+                            <div class="summary-card">
+                                <h3 class="lang-ne">कुल मूल्य</h3>
+                                <h3 class="lang-en">Total Value</h3>
+                                <div class="value" id="total-value">रु. 1,250,000</div>
+                                <div class="change positive" id="total-change">+5.2%</div>
+                            </div>
+                            <div class="summary-card">
+                                <h3 class="lang-ne">लगानी रकम</h3>
+                                <h3 class="lang-en">Invested Amount</h3>
+                                <div class="value" id="invested-amount">रु. 1,150,000</div>
+                                <div class="change" id="invested-change">+0.0%</div>
+                            </div>
+                            <div class="summary-card">
+                                <h3 class="lang-ne">नाफा/नोक्सान</h3>
+                                <h3 class="lang-en">Profit/Loss</h3>
+                                <div class="value positive" id="profit-loss">रु. 100,000</div>
+                                <div class="change positive" id="profit-loss-percent">+8.7%</div>
+                            </div>
+                            <div class="summary-card">
+                                <h3 class="lang-ne">होल्डिङ्स</h3>
+                                <h3 class="lang-en">Holdings</h3>
+                                <div class="value" id="holdings-count">8</div>
+                                <div class="change" id="holdings-change">शेयरहरू</div>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-charts">
+                            <div class="chart-container">
+                                <h3 class="lang-ne">पोर्टफोलियो वितरण</h3>
+                                <h3 class="lang-en">Portfolio Distribution</h3>
+                                <canvas id="portfolio-distribution-chart"></canvas>
+                            </div>
+                            <div class="chart-container">
+                                <h3 class="lang-ne">क्षेत्र वितरण</h3>
+                                <h3 class="lang-en">Sector Distribution</h3>
+                                <canvas id="sector-distribution-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-actions">
+                        <button id="add-stock-btn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            <span class="lang-ne">नयाँ शेयर थप्नुहोस्</span>
+                            <span class="lang-en">Add New Stock</span>
+                        </button>
+                        <button id="export-portfolio-btn" class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            <span class="lang-ne">पोर्टफोलियो निर्यात गर्नुहोस्</span>
+                            <span class="lang-en">Export Portfolio</span>
+                        </button>
+                    </div>
+
+                    <div id="empty-portfolio-message" class="empty-message">
+                        <div class="message-content">
+                            <i class="fas fa-folder-open"></i>
+                            <h3 class="lang-ne">तपाईंको पोर्टफोलियो खाली छ</h3>
+                            <h3 class="lang-en">Your portfolio is empty</h3>
+                            <p class="lang-ne">आफ्नो पोर्टफोलियोमा शेयरहरू थप्न "नयाँ शेयर थप्नुहोस्" बटनमा क्लिक गर्नुहोस्</p>
+                            <p class="lang-en">Click on "Add New Stock" button to add stocks to your portfolio</p>
+                        </div>
+                    </div>
+
+                    <div id="portfolio-table-container" class="table-container">
+                        <table class="portfolio-table">
+                            <thead>
+                                <tr>
+                                    <th class="lang-ne">सिम्बोल</th>
+                                    <th class="lang-en">Symbol</th>
+                                    <th class="lang-ne">कम्पनी</th>
+                                    <th class="lang-en">Company</th>
+                                    <th class="lang-ne">क्षेत्र</th>
+                                    <th class="lang-en">Sector</th>
+                                    <th class="lang-ne">खरिद मूल्य</th>
+                                    <th class="lang-en">Buy Price</th>
+                                    <th class="lang-ne">वर्तमान मूल्य</th>
+                                    <th class="lang-en">Current Price</th>
+                                    <th class="lang-ne">परिवर्तन</th>
+                                    <th class="lang-en">Change</th>
+                                    <th class="lang-ne">मात्रा</th>
+                                    <th class="lang-en">Quantity</th>
+                                    <th class="lang-ne">लगानी रकम</th>
+                                    <th class="lang-en">Invested</th>
+                                    <th class="lang-ne">वर्तमान मूल्य</th>
+                                    <th class="lang-en">Current Value</th>
+                                    <th class="lang-ne">नाफा/नोक्सान</th>
+                                    <th class="lang-en">Profit/Loss</th>
+                                    <th class="lang-ne">कार्यहरू</th>
+                                    <th class="lang-en">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="portfolio-table-body">
+                                <!-- Data will be inserted here by JavaScript -->
+                                <tr>
+                                    <td class="symbol"><a href="company.html?symbol=NABIL">NABIL</a></td>
+                                    <td class="company">Nabil Bank Limited</td>
+                                    <td class="sector">Banking</td>
+                                    <td class="buy-price">रु. 1,100</td>
+                                    <td class="current-price">रु. 1,250</td>
+                                    <td class="change positive">+13.6%</td>
+                                    <td class="quantity">100</td>
+                                    <td class="invested">रु. 110,000</td>
+                                    <td class="current-value">रु. 125,000</td>
+                                    <td class="profit-loss positive">रु. 15,000</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-symbol="NABIL"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn" data-symbol="NABIL"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="symbol"><a href="company.html?symbol=UPPER">UPPER</a></td>
+                                    <td class="company">Upper Tamakoshi Hydropower Ltd.</td>
+                                    <td class="sector">Hydropower</td>
+                                    <td class="buy-price">रु. 400</td>
+                                    <td class="current-price">रु. 450</td>
+                                    <td class="change positive">+12.5%</td>
+                                    <td class="quantity">500</td>
+                                    <td class="invested">रु. 200,000</td>
+                                    <td class="current-value">रु. 225,000</td>
+                                    <td class="profit-loss positive">रु. 25,000</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-symbol="UPPER"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn" data-symbol="UPPER"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="symbol"><a href="company.html?symbol=NICA">NICA</a></td>
+                                    <td class="company">NIC Asia Bank Ltd.</td>
+                                    <td class="sector">Banking</td>
+                                    <td class="buy-price">रु. 900</td>
+                                    <td class="current-price">रु. 880</td>
+                                    <td class="change negative">-2.2%</td>
+                                    <td class="quantity">200</td>
+                                    <td class="invested">रु. 180,000</td>
+                                    <td class="current-value">रु. 176,000</td>
+                                    <td class="profit-loss negative">रु. -4,000</td>
+                                    <td class="actions">
+                                        <button class="edit-btn" data-symbol="NICA"><i class="fas fa-edit"></i></button>
+                                        <button class="delete-btn" data-symbol="NICA"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Stock Modal -->
+    <div id="add-stock-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="lang-ne">नयाँ शेयर थप्नुहोस्</h3>
+                <h3 class="lang-en">Add New Stock</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-stock-form">
+                    <div class="form-group">
+                        <label for="stock-symbol" class="lang-ne">शेयर सिम्बोल</label>
+                        <label for="stock-symbol" class="lang-en">Stock Symbol</label>
+                        <select id="stock-symbol" name="symbol" required>
+                            <option value="">शेयर छान्नुहोस्...</option>
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="buy-price" class="lang-ne">खरिद मूल्य</label>
+                        <label for="buy-price" class="lang-en">Buy Price</label>
+                        <input type="number" id="buy-price" name="buy-price" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity" class="lang-ne">मात्रा</label>
+                        <label for="quantity" class="lang-en">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="buy-date" class="lang-ne">खरिद मिति</label>
+                        <label for="buy-date" class="lang-en">Buy Date</label>
+                        <input type="date" id="buy-date" name="buy-date" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-add-stock" class="btn btn-outline">
+                            <span class="lang-ne">रद्द गर्नुहोस्</span>
+                            <span class="lang-en">Cancel</span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="lang-ne">थप्नुहोस्</span>
+                            <span class="lang-en">Add</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <p>NEPSE Tracker</p>
+                </div>
+                <div class="footer-links">
+                    <h3>
+                        <span class="lang-ne">लिंकहरू</span>
+                        <span class="lang-en">Links</span>
+                    </h3>
+                    <ul>
+                        <li><a href="index.html">
+                            <span class="lang-ne">होम</span>
+                            <span class="lang-en">Home</span>
+                        </a></li>
+                        <li><a href="companies.html">
+                            <span class="lang-ne">कम्पनीहरू</span>
+                            <span class="lang-en">Companies</span>
+                        </a></li>
+                        <li><a href="analysis.html">
+                            <span class="lang-ne">विश्लेषण</span>
+                            <span class="lang-en">Analysis</span>
+                        </a></li>
+                        <li><a href="watchlist.html">
+                            <span class="lang-ne">वाचलिस्ट</span>
+                            <span class="lang-en">Watchlist</span>
+                        </a></li>
+                        <li><a href="about.html">
+                            <span class="lang-ne">हाम्रो बारेमा</span>
+                            <span class="lang-en">About</span>
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>
+                        <span class="lang-ne">सम्पर्क</span>
+                        <span class="lang-en">Contact</span>
+                    </h3>
+                    <p><i class="fas fa-envelope"></i> info@nepsetracker.com</p>
+                    <p><i class="fas fa-phone"></i> +977 9800000000</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. 
+                    <span class="lang-ne">सर्वाधिकार सुरक्षित।</span>
+                    <span class="lang-en">All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html> 

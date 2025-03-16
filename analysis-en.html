@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Analysis - NEPSE Stock Market Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index-en.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index-en.html">Home</a></li>
+                    <li><a href="companies-en.html">Companies</a></li>
+                    <li><a href="analysis-en.html" class="active">Analysis</a></li>
+                    <li><a href="watchlist-en.html">Watchlist</a></li>
+                    <li><a href="portfolio-en.html">Portfolio</a></li>
+                    <li><a href="about-en.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne">नेपाली</option>
+                    <option value="en" selected>English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login-en.html" class="btn btn-outline">Login</a>
+                <a href="signup-en.html" class="btn btn-primary">Signup</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Technical Analysis</h1>
+            <p>Technical analysis and recommendations for companies</p>
+        </div>
+    </section>
+
+    <section class="technical-analysis">
+        <div class="container">
+            <h2 class="section-title">Technical Analysis</h2>
+            <div class="analysis-container">
+                <div class="company-selector">
+                    <select id="company-select">
+                        <option value="">Select Company</option>
+                        <option value="NABIL">Nabil Bank Limited</option>
+                        <option value="NRIC">Nepal Reinsurance Company Limited</option>
+                        <option value="UPPER">Upper Tamakoshi Hydropower Limited</option>
+                        <option value="NTC">Nepal Telecom</option>
+                        <option value="NHPC">National Hydropower Company Limited</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="technical-chart"></canvas>
+                </div>
+                <div class="indicators">
+                    <div class="indicator-card">
+                        <h3>RSI</h3>
+                        <p class="value" id="rsi-value">45.67</p>
+                        <p class="recommendation" id="rsi-recommendation">Neutral</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>MACD</h3>
+                        <p class="value" id="macd-value">5.23</p>
+                        <p class="recommendation positive" id="macd-recommendation">Buy</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>Moving Average</h3>
+                        <p class="value" id="ma-value">1,250.45</p>
+                        <p class="recommendation negative" id="ma-recommendation">Sell</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>Overall Recommendation</h3>
+                        <p class="recommendation" id="overall-recommendation">Neutral</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="analysis-explanation">
+        <div class="container">
+            <h2 class="section-title">Technical Indicators</h2>
+            <div class="explanation-cards">
+                <div class="explanation-card">
+                    <h3>RSI (Relative Strength Index)</h3>
+                    <p>RSI is a momentum indicator that measures the speed and change of price movements. It ranges from 0 to 100.</p>
+                    <ul>
+                        <li><strong>RSI &lt; 30:</strong> Oversold condition, Buy recommendation</li>
+                        <li><strong>RSI &gt; 70:</strong> Overbought condition, Sell recommendation</li>
+                        <li><strong>30 &lt; RSI &lt; 70:</strong> Neutral condition</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>MACD (Moving Average Convergence Divergence)</h3>
+                    <p>MACD is a trend-following momentum indicator that shows the relationship between two moving averages.</p>
+                    <ul>
+                        <li><strong>MACD &gt; 0:</strong> Bullish trend, Buy recommendation</li>
+                        <li><strong>MACD &lt; 0:</strong> Bearish trend, Sell recommendation</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>Moving Average</h3>
+                    <p>Moving Average is the average price over a specific period. It helps identify the direction of the price trend.</p>
+                    <ul>
+                        <li><strong>Price &gt; MA:</strong> Bullish trend, Buy recommendation</li>
+                        <li><strong>Price &lt; MA:</strong> Bearish trend, Sell recommendation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>NEPSE Tracker</h2>
+                    <p>Your trusted companion for Nepal's stock market</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index-en.html">Home</a></li>
+                        <li><a href="companies-en.html">Companies</a></li>
+                        <li><a href="analysis-en.html">Analysis</a></li>
+                        <li><a href="about-en.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/analysis.js"></script>
+</body>
+</html> 

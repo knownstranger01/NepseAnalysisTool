@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>विश्लेषण - नेप्से स्टक मार्केट ट्र्याकर</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="companies.html">कम्पनीहरू</a></li>
+                    <li><a href="analysis.html" class="active">विश्लेषण</a></li>
+                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
+                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
+                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne" selected>नेपाली</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">लगइन</a>
+                <a href="signup.html" class="btn btn-primary">साइनअप</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>प्राविधिक विश्लेषण</h1>
+            <p>कम्पनीहरूको प्राविधिक विश्लेषण र सिफारिसहरू</p>
+        </div>
+    </section>
+
+    <section class="technical-analysis">
+        <div class="container">
+            <h2 class="section-title">प्राविधिक विश्लेषण</h2>
+            <div class="company-info">
+                <h3><span id="company-symbol">NABIL</span> - <span id="company-name">नबिल बैंक लिमिटेड</span></h3>
+                <div class="price-info">
+                    <div class="current-price">
+                        <span id="current-price">1250.50</span>
+                    </div>
+                    <div class="price-change">
+                        <span id="price-change" class="positive"><i class="fas fa-arrow-up"></i> +3.75%</span>
+                    </div>
+                </div>
+                <div class="additional-info">
+                    <div class="info-item">
+                        <span class="label">खुला:</span>
+                        <span id="open-price">1245.00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">उच्च:</span>
+                        <span id="high-price">1260.00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">न्यून:</span>
+                        <span id="low-price">1240.00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">भोल्युम:</span>
+                        <span id="volume">45,678</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">बजार पूँजी:</span>
+                        <span id="market-cap">125,000,000,000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="analysis-container">
+                <div class="company-selector">
+                    <select id="company-select">
+                        <option value="">कम्पनी छान्नुहोस्</option>
+                        <option value="NABIL">नबिल बैंक लिमिटेड</option>
+                        <option value="NRIC">नेपाल पुनर्बीमा कम्पनी लिमिटेड</option>
+                        <option value="UPPER">अपर तामाकोशी हाइड्रोपावर लिमिटेड</option>
+                        <option value="NTC">नेपाल टेलिकम</option>
+                        <option value="NHPC">नेशनल हाइड्रोपावर कम्पनी लिमिटेड</option>
+                    </select>
+                </div>
+                
+                <div class="chart-type-selector">
+                    <h3>चार्ट प्रकार</h3>
+                    <div class="chart-buttons">
+                        <button class="chart-btn active" data-chart="line">लाइन चार्ट</button>
+                        <button class="chart-btn" data-chart="bar">बार चार्ट</button>
+                        <button class="chart-btn" data-chart="candlestick">क्यान्डलस्टिक चार्ट</button>
+                        <button class="chart-btn" data-chart="ohlc">OHLC चार्ट</button>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="price-chart"></canvas>
+                </div>
+                
+                <div class="indicator-selector">
+                    <h3>प्राविधिक सूचकहरू</h3>
+                    <div class="indicator-checkboxes">
+                        <label><input type="checkbox" id="show-volume" checked> भोल्युम</label>
+                        <label><input type="checkbox" id="show-ma" checked> चलित औसत (MA)</label>
+                        <label><input type="checkbox" id="show-bollinger"> बोलिन्जर ब्यान्ड्स</label>
+                        <label><input type="checkbox" id="show-rsi"> RSI</label>
+                        <label><input type="checkbox" id="show-macd"> MACD</label>
+                        <label><input type="checkbox" id="show-support-resistance"> सपोर्ट/रेजिस्टेन्स</label>
+                    </div>
+                </div>
+                
+                <div class="secondary-charts">
+                    <div class="volume-chart-container">
+                        <h3>भोल्युम चार्ट</h3>
+                        <canvas id="volume-chart"></canvas>
+                    </div>
+                    
+                    <div class="indicator-chart-container">
+                        <h3>RSI सूचक</h3>
+                        <canvas id="rsi-chart"></canvas>
+                    </div>
+                    
+                    <div class="indicator-chart-container">
+                        <h3>MACD सूचक</h3>
+                        <canvas id="macd-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="indicators">
+                    <div class="indicator-card">
+                        <h3>RSI</h3>
+                        <p class="value" id="rsi-value">45.67</p>
+                        <p class="recommendation" id="rsi-recommendation">तटस्थ</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>MACD</h3>
+                        <p class="value" id="macd-value">5.23</p>
+                        <p class="recommendation positive" id="macd-recommendation">खरीद</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>MA-50</h3>
+                        <p class="value" id="ma-50">1,250.45</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>MA-200</h3>
+                        <p class="value" id="ma-200">1,225.25</p>
+                    </div>
+                    <div class="indicator-card">
+                        <h3>समग्र सिफारिस</h3>
+                        <p class="recommendation" id="recommendation">तटस्थ</p>
+                        <p class="small-text" id="recommendation-explanation">प्राविधिक सूचकहरू मिश्रित संकेतहरू देखाउँदैछन्।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="analysis-explanation">
+        <div class="container">
+            <h2 class="section-title">प्राविधिक सूचकहरू</h2>
+            <div class="explanation-cards">
+                <div class="explanation-card">
+                    <h3>RSI (Relative Strength Index)</h3>
+                    <p>RSI एक गति सूचक हो जसले शेयरको मूल्य परिवर्तनको गति मापन गर्दछ। यसले 0 देखि 100 सम्मको मान लिन्छ।</p>
+                    <ul>
+                        <li><strong>RSI &lt; 30:</strong> अति बिक्री अवस्था, खरीद सिफारिस</li>
+                        <li><strong>RSI &gt; 70:</strong> अति खरीद अवस्था, बिक्री सिफारिस</li>
+                        <li><strong>30 &lt; RSI &lt; 70:</strong> तटस्थ अवस्था</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>MACD (Moving Average Convergence Divergence)</h3>
+                    <p>MACD एक प्रवृत्ति-अनुसरण गति सूचक हो जसले दुई चलित औसतहरू बीचको सम्बन्ध देखाउँछ।</p>
+                    <ul>
+                        <li><strong>MACD &gt; 0:</strong> बुलिश प्रवृत्ति, खरीद सिफारिस</li>
+                        <li><strong>MACD &lt; 0:</strong> बेयरिश प्रवृत्ति, बिक्री सिफारिस</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>Moving Average</h3>
+                    <p>चलित औसत एक निश्चित अवधिको औसत मूल्य हो। यसले मूल्य प्रवृत्तिको दिशा पहिचान गर्न मद्दत गर्दछ।</p>
+                    <ul>
+                        <li><strong>मूल्य &gt; MA:</strong> बुलिश प्रवृत्ति, खरीद सिफारिस</li>
+                        <li><strong>मूल्य &lt; MA:</strong> बेयरिश प्रवृत्ति, बिक्री सिफारिस</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>बोलिन्जर ब्यान्ड्स</h3>
+                    <p>बोलिन्जर ब्यान्ड्स एक चलित औसत र दुई ब्यान्ड्स हुन् जुन मानक विचलनको आधारमा बनाइएका हुन्।</p>
+                    <ul>
+                        <li><strong>मूल्य &gt; माथिल्लो ब्यान्ड:</strong> अति खरीद अवस्था</li>
+                        <li><strong>मूल्य &lt; तल्लो ब्यान्ड:</strong> अति बिक्री अवस्था</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>क्यान्डलस्टिक प्याटर्न</h3>
+                    <p>क्यान्डलस्टिक प्याटर्नहरूले बजारको मनोविज्ञान र संभावित मूल्य परिवर्तनको संकेत दिन्छन्।</p>
+                    <ul>
+                        <li><strong>डोजी:</strong> बजारमा अनिश्चितता</li>
+                        <li><strong>ह्यामर:</strong> संभावित तल्लो बिन्दु</li>
+                        <li><strong>इन्गल्फिङ:</strong> प्रवृत्ति परिवर्तनको संकेत</li>
+                    </ul>
+                </div>
+                <div class="explanation-card">
+                    <h3>सपोर्ट र रेजिस्टेन्स</h3>
+                    <p>सपोर्ट र रेजिस्टेन्स स्तरहरू ती मूल्य स्तरहरू हुन् जहाँ शेयरको मूल्य रोकिने र उल्टिने प्रवृत्ति देखिन्छ।</p>
+                    <ul>
+                        <li><strong>सपोर्ट:</strong> त्यो मूल्य स्तर जहाँ खरीद चाप बढ्छ</li>
+                        <li><strong>रेजिस्टेन्स:</strong> त्यो मूल्य स्तर जहाँ बिक्री चाप बढ्छ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>नेप्से ट्र्याकर</h2>
+                    <p>नेपालको स्टक मार्केटको लागि तपाईंको विश्वसनीय साथी</p>
+                </div>
+                <div class="footer-links">
+                    <h3>द्रुत लिङ्कहरू</h3>
+                    <ul>
+                        <li><a href="index.html">होम</a></li>
+                        <li><a href="companies.html">कम्पनीहरू</a></li>
+                        <li><a href="analysis.html">विश्लेषण</a></li>
+                        <li><a href="watchlist.html">मेरो वाचलिस्ट</a></li>
+                        <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>सम्पर्क</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 नेप्से ट्र्याकर। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <script src="js/common.js"></script>
+    <script src="js/analysis.js"></script>
+</body>
+</html> 

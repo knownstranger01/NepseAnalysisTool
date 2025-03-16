@@ -1,0 +1,795 @@
+/* नेप्से ट्र्याकर - साझा CSS */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #34a853;
+    --danger-color: #ea4335;
+    --warning-color: #fbbc05;
+    --dark-color: #202124;
+    --light-color: #f8f9fa;
+    --gray-color: #5f6368;
+    --border-color: #dadce0;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* भाषा प्रदर्शन नियम */
+.content-ne, .content-en {
+    display: none;
+}
+
+html[lang="ne"] .content-ne {
+    display: block;
+}
+
+html[lang="en"] .content-en {
+    display: block;
+}
+
+/* इनलाइन भाषा तत्वहरू */
+.inline-ne, .inline-en {
+    display: none;
+}
+
+html[lang="ne"] .inline-ne {
+    display: inline-block;
+}
+
+html[lang="en"] .inline-en {
+    display: inline-block;
+}
+
+/* भाषा स्विचिङ */
+.lang-ne, .lang-en {
+    display: none;
+}
+
+html[lang="ne"] .lang-ne {
+    display: inline-block;
+}
+
+html[lang="en"] .lang-en {
+    display: inline-block;
+}
+
+/* दुवै भाषामा देखाउने तत्वहरू */
+.bilingual-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bilingual-content .content-ne,
+.bilingual-content .content-en {
+    display: block;
+}
+
+.bilingual-content .content-ne {
+    font-weight: 500;
+}
+
+.bilingual-content .content-en {
+    font-size: 0.9em;
+    color: var(--gray-color);
+}
+
+/* दुवै भाषामा देखाउने इनलाइन तत्वहरू */
+.bilingual-inline {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.bilingual-inline .inline-ne,
+.bilingual-inline .inline-en {
+    display: inline-block;
+}
+
+.bilingual-inline .inline-en {
+    font-size: 0.8em;
+    color: var(--gray-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* हेडर */
+header {
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav {
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--dark-color);
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+nav ul li a.active {
+    color: var(--primary-color);
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* नेपाली र अंग्रेजी पृष्ठहरू बीच लिंक */
+.language-switcher {
+    margin-left: 10px;
+}
+
+.language-switcher select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: 'Mukta', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.language-switcher select:hover {
+    border-color: var(--primary-color);
+}
+
+/* अथेन्टिकेशन बटनहरू */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0d62d0;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: rgba(26, 115, 232, 0.1);
+}
+
+/* प्रयोगकर्ता प्रोफाइल */
+.user-profile {
+    position: relative;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.profile-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.profile-button i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    padding: 10px 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.profile-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-dropdown li {
+    margin: 0;
+}
+
+.profile-dropdown a,
+.profile-dropdown button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.profile-dropdown a:hover,
+.profile-dropdown button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.profile-dropdown i {
+    margin-right: 10px;
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+.logout-button {
+    color: var(--danger-color) !important;
+}
+
+.logout-button i {
+    color: var(--danger-color);
+}
+
+/* मेनु टगल (मोबाइल) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--dark-color);
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* फुटर */
+footer {
+    background-color: var(--dark-color);
+    color: #fff;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-logo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.footer-links h3, .footer-contact h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 15px;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* सेक्सन शीर्षक */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* पेज हेडर */
+.page-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* टेबल स्टाइल */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* पोजिटिभ/नेगेटिभ भ्यालुहरू */
+.positive {
+    color: var(--secondary-color);
+}
+
+.negative {
+    color: var(--danger-color);
+}
+
+/* रेस्पोन्सिभ स्टाइल */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: #fff;
+        transition: left 0.3s;
+        box-shadow: var(--box-shadow);
+    }
+
+    nav.active {
+        left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .language-switcher {
+        margin: 10px 0;
+    }
+
+    .auth-buttons {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        padding: 15px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .auth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .user-profile {
+        width: 100%;
+    }
+
+    .profile-dropdown {
+        width: 100%;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    header .container {
+        padding: 10px;
+    }
+
+    nav ul {
+        padding: 10px;
+    }
+
+    .page-header {
+        padding: 40px 0;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* स्क्रोल टप बटन */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover {
+    background-color: #0d62d0;
+}
+
+/* हिरो सेक्सन - होम पेज */
+.home-hero-section {
+    background-color: #0a1929;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(10, 25, 41, 0.8), rgba(10, 25, 41, 0.9)), url('../images/stock-chart-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.home-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/pattern.svg');
+    background-size: cover;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.home-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.home-hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.home-hero-search {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.home-hero-search input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.home-hero-search button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    padding: 0 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.home-hero-search button:hover {
+    background-color: #0d62d0;
+}
+
+/* रेस्पोन्सिभ स्टाइल होम हिरो सेक्सनको लागि */
+@media (max-width: 992px) {
+    .home-hero-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-hero-section {
+        padding: 80px 0;
+    }
+    
+    .home-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .home-hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .home-hero-search input {
+        padding: 12px 20px;
+    }
+    
+    .home-hero-search button {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-hero-section {
+        padding: 60px 0;
+    }
+    
+    .home-hero-title {
+        font-size: 2rem;
+    }
+    
+    .home-hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+    
+    .home-hero-search input {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+    
+    .home-hero-search button {
+        padding: 0 15px;
+        font-size: 1rem;
+    }
+}
+
+/* एउटा भाषा मात्र देखाउने */
+<div class="content-ne">यो नेपालीमा मात्र देखिन्छ</div>
+<div class="content-en">This is shown only in English</div>
+
+/* दुवै भाषा एकैपटक देखाउने */
+<div class="bilingual-content">
+    <div class="content-ne">नेप्से ट्र्याकर - नेपाल स्टक एक्सचेन्ज अनुगमन प्रणाली</div>
+    <div class="content-en">NEPSE Tracker - Nepal Stock Exchange Monitoring System</div>
+</div>
+
+/* इनलाइन तत्वहरू */
+<span class="bilingual-inline">
+    <span class="inline-ne">सम्पर्क</span>
+    <span class="inline-en">Contact</span>
+</span> 

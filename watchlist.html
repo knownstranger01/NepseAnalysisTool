@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेरो वाचलिस्ट - नेप्से स्टक मार्केट ट्र्याकर</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">होम</a></li>
+                    <li><a href="companies.html">कम्पनीहरू</a></li>
+                    <li><a href="analysis.html">विश्लेषण</a></li>
+                    <li><a href="watchlist.html" class="active">वाचलिस्ट</a></li>
+                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
+                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="ne" selected>नेपाली</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">लगइन</a>
+                <a href="signup.html" class="btn btn-primary">साइनअप</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>मेरो वाचलिस्ट</h1>
+            <p>तपाईंले ट्र्याक गर्न चाहेका शेयरहरू यहाँ व्यवस्थित गर्नुहोस्</p>
+        </div>
+    </section>
+
+    <section class="watchlist-section">
+        <div class="container">
+            <div class="watchlist-header">
+                <div class="watchlist-actions">
+                    <button id="add-to-watchlist" class="btn primary-btn">
+                        <i class="fas fa-plus"></i> नयाँ शेयर थप्नुहोस्
+                    </button>
+                    <button id="refresh-watchlist" class="btn secondary-btn">
+                        <i class="fas fa-sync-alt"></i> रिफ्रेस
+                    </button>
+                </div>
+                <div class="watchlist-filter">
+                    <input type="text" id="watchlist-search" placeholder="शेयर खोज्नुहोस्...">
+                    <select id="watchlist-sort">
+                        <option value="symbol">सिम्बोल अनुसार</option>
+                        <option value="change">परिवर्तन अनुसार</option>
+                        <option value="price">मूल्य अनुसार</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="watchlist-content">
+                <div id="watchlist-login-message" style="display: none;">
+                    <div class="login-required-message">
+                        <i class="fas fa-lock"></i>
+                        <h3>वाचलिस्ट हेर्न लगइन गर्नुहोस्</h3>
+                        <p>आफ्नो वाचलिस्ट व्यवस्थापन गर्न र शेयरहरू ट्र्याक गर्न लगइन गर्नुहोस्</p>
+                        <a href="login.html" class="btn primary-btn">लगइन गर्नुहोस्</a>
+                        <p class="signup-text">खाता छैन? <a href="signup.html">साइनअप गर्नुहोस्</a></p>
+                    </div>
+                </div>
+
+                <div id="watchlist-table-container">
+                    <div class="table-responsive">
+                        <table class="watchlist-table" id="watchlist-table">
+                            <thead>
+                                <tr>
+                                    <th>सिम्बोल</th>
+                                    <th>कम्पनी</th>
+                                    <th>अन्तिम मूल्य</th>
+                                    <th>परिवर्तन</th>
+                                    <th>परिवर्तन %</th>
+                                    <th>उच्च</th>
+                                    <th>न्यून</th>
+                                    <th>कारोबार मात्रा</th>
+                                    <th>नोट</th>
+                                    <th>कार्यहरू</th>
+                                </tr>
+                            </thead>
+                            <tbody id="watchlist-table-body">
+                                <!-- यहाँ JavaScript द्वारा डाटा लोड हुनेछ -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="empty-watchlist-message" style="display: none;">
+                    <div class="empty-state">
+                        <i class="far fa-star"></i>
+                        <h3>तपाईंको वाचलिस्ट खाली छ</h3>
+                        <p>कम्पनीहरू पेजबाट शेयरहरू थप्न सुरु गर्नुहोस्</p>
+                        <a href="companies.html" class="btn primary-btn">कम्पनीहरू हेर्नुहोस्</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- नोट मोडल -->
+    <div class="modal" id="note-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>शेयर नोट</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="note-form">
+                    <input type="hidden" id="note-symbol">
+                    <div class="form-group">
+                        <label for="note-text">नोट:</label>
+                        <textarea id="note-text" rows="4" placeholder="यस शेयरको बारेमा नोट लेख्नुहोस्..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" id="cancel-note">रद्द गर्नुहोस्</button>
+                        <button type="submit" class="btn primary-btn">सेभ गर्नुहोस्</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- शेयर थप्ने मोडल -->
+    <div class="modal" id="add-stock-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>वाचलिस्टमा शेयर थप्नुहोस्</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-stock-form">
+                    <div class="form-group">
+                        <label for="stock-symbol">शेयर सिम्बोल:</label>
+                        <select id="stock-symbol" required>
+                            <option value="">शेयर छान्नुहोस्...</option>
+                            <!-- यहाँ JavaScript द्वारा विकल्पहरू लोड हुनेछन् -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock-note">नोट (वैकल्पिक):</label>
+                        <textarea id="stock-note" rows="3" placeholder="यस शेयरको बारेमा नोट लेख्नुहोस्..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" id="cancel-add-stock">रद्द गर्नुहोस्</button>
+                        <button type="submit" class="btn primary-btn">थप्नुहोस्</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>नेप्से ट्र्याकर</h2>
+                    <p>नेपालको स्टक मार्केटको लागि तपाईंको विश्वसनीय साथी</p>
+                </div>
+                <div class="footer-links">
+                    <h3>द्रुत लिङ्कहरू</h3>
+                    <ul>
+                        <li><a href="index.html">होम</a></li>
+                        <li><a href="companies.html">कम्पनीहरू</a></li>
+                        <li><a href="analysis.html">विश्लेषण</a></li>
+                        <li><a href="watchlist.html">मेरो वाचलिस्ट</a></li>
+                        <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>सम्पर्क</h3>
+                    <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9705886323</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/knownstranger01"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 नेप्से ट्र्याकर। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS फाइलहरू -->
+    <script src="js/common.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/watchlist.js"></script>
+</body>
+</html> 
