@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market News - NEPSE Tracker</title>
+    <meta name="description" content="Latest news, regulatory changes, market trends, and expert analysis for the Nepal Stock Exchange (NEPSE)">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies.html">Companies</a></li>
+                    <li><a href="analysis.html">Analysis</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="watchlist.html">Watchlist</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="user-profile" style="display: none;">
+                <button class="profile-button">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="user-name">User</span>
+                </button>
+                <div class="profile-dropdown">
+                    <ul>
+                        <li><a href="profile.html"><i class="fas fa-user"></i> My Profile</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chart-line"></i> My Portfolio</a></li>
+                        <li><a href="watchlist.html"><i class="fas fa-star"></i> My Watchlist</a></li>
+                        <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Market News</h1>
+                <p>Stay updated with the latest news, regulatory changes, market trends, and expert analysis</p>
+            </div>
+        </section>
+
+        <section class="news-filter-section">
+            <div class="container">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="news-category">Category:</label>
+                        <select id="news-category">
+                            <option value="all">All Categories</option>
+                            <option value="market-updates">Market Updates</option>
+                            <option value="regulatory">Regulatory Changes</option>
+                            <option value="company-news">Company News</option>
+                            <option value="ipo">IPO News</option>
+                            <option value="dividend">Dividend Announcements</option>
+                            <option value="analysis">Expert Analysis</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="news-date">Date Range:</label>
+                        <select id="news-date">
+                            <option value="today">Today</option>
+                            <option value="week" selected>This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">Last 3 Months</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                    <div class="search-group">
+                        <input type="text" id="news-search" placeholder="Search news...">
+                        <button id="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-news">
+            <div class="container">
+                <h2>Featured News</h2>
+                <div class="featured-news-container">
+                    <div class="featured-news-item">
+                        <div class="featured-news-image">
+                            <img src="img/news/featured-1.jpg" alt="NEPSE Reaches New High">
+                            <span class="news-category market-updates">Market Updates</span>
+                        </div>
+                        <div class="featured-news-content">
+                            <h3>NEPSE Reaches New High as Banking Sector Surges</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 15, 2023</span>
+                                <span class="news-author"><i class="far fa-user"></i> Financial Analyst</span>
+                            </p>
+                            <p class="news-excerpt">The Nepal Stock Exchange (NEPSE) index reached a new high today, primarily driven by strong performance in the banking sector. Investors are showing renewed confidence in financial institutions...</p>
+                            <a href="news-detail.html?id=1" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-categories">
+            <div class="container">
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="all">All News</button>
+                    <button class="tab-btn" data-category="market-updates">Market Updates</button>
+                    <button class="tab-btn" data-category="regulatory">Regulatory</button>
+                    <button class="tab-btn" data-category="company-news">Company News</button>
+                    <button class="tab-btn" data-category="analysis">Analysis</button>
+                </div>
+
+                <div class="news-grid" id="news-container">
+                    <!-- Market Updates -->
+                    <div class="news-item" data-category="market-updates">
+                        <div class="news-image">
+                            <img src="img/news/market-1.jpg" alt="NEPSE Daily Update">
+                            <span class="news-category market-updates">Market Updates</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>NEPSE Gains 20 Points: Banking and Hydropower Lead</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 16, 2023</span>
+                            </p>
+                            <p class="news-excerpt">The NEPSE index gained 20 points today, closing at 2,345.67. Banking and hydropower sectors led the gains with...</p>
+                            <a href="news-detail.html?id=2" class="read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Regulatory News -->
+                    <div class="news-item" data-category="regulatory">
+                        <div class="news-image">
+                            <img src="img/news/regulatory-1.jpg" alt="SEBON Announces New Regulations">
+                            <span class="news-category regulatory">Regulatory</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>SEBON Announces New Regulations for Broker Commissions</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 14, 2023</span>
+                            </p>
+                            <p class="news-excerpt">The Securities Board of Nepal (SEBON) has announced new regulations regarding broker commissions, which will take effect from...</p>
+                            <a href="news-detail.html?id=3" class="read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Company News -->
+                    <div class="news-item" data-category="company-news">
+                        <div class="news-image">
+                            <img src="img/news/company-1.jpg" alt="NIC Asia Quarterly Results">
+                            <span class="news-category company-news">Company News</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>NIC Asia Bank Reports 20% Growth in Quarterly Profit</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 13, 2023</span>
+                            </p>
+                            <p class="news-excerpt">NIC Asia Bank has reported a 20% year-on-year growth in its quarterly profit, exceeding market expectations. The bank attributes this growth to...</p>
+                            <a href="news-detail.html?id=4" class="read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Expert Analysis -->
+                    <div class="news-item" data-category="analysis">
+                        <div class="news-image">
+                            <img src="img/news/analysis-1.jpg" alt="Market Analysis">
+                            <span class="news-category analysis">Analysis</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Technical Analysis: NEPSE Approaching Resistance Level</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 12, 2023</span>
+                                <span class="news-author"><i class="far fa-user"></i> Technical Analyst</span>
+                            </p>
+                            <p class="news-excerpt">According to our technical analysis, the NEPSE index is approaching a key resistance level at 2,400. This level has been tested multiple times in the past and...</p>
+                            <a href="news-detail.html?id=5" class="read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- IPO News -->
+                    <div class="news-item" data-category="ipo">
+                        <div class="news-image">
+                            <img src="img/news/ipo-1.jpg" alt="Upcoming IPO">
+                            <span class="news-category ipo">IPO</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Himalayan Power Partners Announces IPO Worth Rs. 1 Billion</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 11, 2023</span>
+                            </p>
+                            <p class="news-excerpt">Himalayan Power Partners Ltd. has announced its Initial Public Offering (IPO) worth Rs. 1 billion. The company plans to issue...</p>
+                            <a href="news-detail.html?id=6" class="read-more">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Dividend News -->
+                    <div class="news-item" data-category="dividend">
+                        <div class="news-image">
+                            <img src="img/news/dividend-1.jpg" alt="Dividend Announcement">
+                            <span class="news-category dividend">Dividend</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Nepal Bank Announces 15% Dividend for Fiscal Year 2079/80</h3>
+                            <p class="news-meta">
+                                <span class="news-date"><i class="far fa-calendar-alt"></i> March 10, 2023</span>
+                            </p>
+                            <p class="news-excerpt">Nepal Bank Limited has announced a 15% dividend for the fiscal year 2079/80, including 10% bonus shares and 5% cash dividend. The announcement comes after...</p>
+                            <a href="news-detail.html?id=7" class="read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination" id="news-pagination">
+                    <button class="pagination-btn prev-btn disabled" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="pagination-btn page-btn active" data-page="1">1</button>
+                    <button class="pagination-btn page-btn" data-page="2">2</button>
+                    <button class="pagination-btn page-btn" data-page="3">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn page-btn" data-page="10">10</button>
+                    <button class="pagination-btn next-btn">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-container">
+                    <div class="newsletter-content">
+                        <h2>Subscribe to Our Newsletter</h2>
+                        <p>Get the latest market news, updates, and analysis delivered directly to your inbox.</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <form id="newsletter-form">
+                            <input type="email" id="newsletter-email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <h3>NEPSE Tracker</h3>
+                    <p>Your comprehensive platform for tracking and analyzing the Nepal Stock Exchange.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="analysis.html">Analysis</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="watchlist.html">Watchlist</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> info@nepsetracker.com</p>
+                    <p><i class="fas fa-phone"></i> +977 9800000000</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/common.js"></script>
+    <script src="js/api_service.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html> 

@@ -1,8 +1,5 @@
 // DOM लोड भएपछि कोड चलाउनुहोस्
 document.addEventListener('DOMContentLoaded', function() {
-    // भाषा स्विचर
-    initLanguageSwitcher();
-    
     // मेनु टगल
     initMenuToggle();
     
@@ -20,11 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const linkPage = link.getAttribute('href');
         if (currentPage === linkPage || 
             (currentPage === '' && linkPage === 'index.html') || 
-            (currentPage === '/' && linkPage === 'index.html') ||
-            (currentPage === 'index-en.html' && linkPage === 'index.html') ||
-            (currentPage === 'companies-en.html' && linkPage === 'companies.html') ||
-            (currentPage === 'analysis-en.html' && linkPage === 'analysis.html') ||
-            (currentPage === 'about-en.html' && linkPage === 'about.html')) {
+            (currentPage === '/' && linkPage === 'index.html')) {
             link.classList.add('active');
         }
     });
@@ -171,64 +164,14 @@ function getLocalData(key) {
 
 // भाषा स्विचर
 function initLanguageSwitcher() {
-    const languageSelect = document.getElementById('language-select');
-    
-    if (languageSelect) {
-        // लोकल स्टोरेजबाट भाषा प्राप्त गर्ने
-        const savedLanguage = localStorage.getItem('language') || 'ne';
-        
-        // HTML लैंग एट्रिब्युट सेट गर्ने
-        document.documentElement.lang = savedLanguage;
-        
-        // सेलेक्ट भ्यालु सेट गर्ने
-        languageSelect.value = savedLanguage;
-        
-        // भाषा परिवर्तन इभेन्ट
-        languageSelect.addEventListener('change', function() {
-            const selectedLanguage = this.value;
-            
-            // HTML लैंग एट्रिब्युट अपडेट गर्ने
-            document.documentElement.lang = selectedLanguage;
-            
-            // लोकल स्टोरेजमा सेभ गर्ने
-            localStorage.setItem('language', selectedLanguage);
-            
-            // अर्को भाषाको पृष्ठमा रिडाइरेक्ट गर्ने
-            redirectToLanguagePage(selectedLanguage);
-        });
-    }
+    // यो फंक्सन अब केही गर्दैन, तर अन्य कोडमा यसको कल भएको हुन सक्छ
+    return;
 }
 
 // भाषा अनुसार पृष्ठ रिडाइरेक्ट
 function redirectToLanguagePage(language) {
-    // वर्तमान पेज URL प्राप्त गर्ने
-    const currentPage = window.location.pathname.split('/').pop();
-    
-    // अंग्रेजी र नेपाली पेजहरूको म्यापिङ
-    const pageMapping = {
-        'index.html': 'index-en.html',
-        'index-en.html': 'index.html',
-        'companies.html': 'companies-en.html',
-        'companies-en.html': 'companies.html',
-        'analysis.html': 'analysis-en.html',
-        'analysis-en.html': 'analysis.html',
-        'about.html': 'about-en.html',
-        'about-en.html': 'about.html',
-        'portfolio.html': 'portfolio-en.html',
-        'portfolio-en.html': 'portfolio.html',
-        'watchlist.html': 'watchlist-en.html',
-        'watchlist-en.html': 'watchlist.html'
-    };
-    
-    // यदि वर्तमान पेजको म्यापिङ छ भने
-    if (pageMapping[currentPage]) {
-        // भाषा अनुसार पेज परिवर्तन गर्ने
-        if (language === 'en' && !currentPage.includes('-en')) {
-            window.location.href = pageMapping[currentPage];
-        } else if (language === 'ne' && currentPage.includes('-en')) {
-            window.location.href = pageMapping[currentPage];
-        }
-    }
+    // यो फंक्सन अब केही गर्दैन, तर अन्य कोडमा यसको कल भएको हुन सक्छ
+    return;
 }
 
 // मेनु टगल
@@ -310,11 +253,8 @@ function updateUIBasedOnLoginStatus(isLoggedIn) {
 
 // प्रतिबन्धित पेजहरूमा पहुँच जाँच गर्ने
 function checkRestrictedPageAccess(isLoggedIn) {
-    // वर्तमान पेज URL प्राप्त गर्ने
     const currentPage = window.location.pathname.split('/').pop();
-    
-    // प्रतिबन्धित पेजहरू
-    const restrictedPages = ['portfolio.html', 'watchlist.html', 'portfolio-en.html', 'watchlist-en.html'];
+    const restrictedPages = ['portfolio.html', 'watchlist.html'];
     
     // यदि प्रतिबन्धित पेज हो र लगइन छैन भने
     if (restrictedPages.includes(currentPage) && !isLoggedIn) {

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>नेप्से सूचीबद्ध कम्पनीहरू ट्र्याकर | NEPSE Listed Companies Tracker</title>
+    <title>Companies - NEPSE Tracker</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="img/logo.png" alt="NEPSE Tracker Logo">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
                     <span>NEPSE Tracker</span>
                 </a>
             </div>
@@ -25,137 +25,108 @@
             </div>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html">होम</a></li>
-                    <li><a href="companies.html" class="active">कम्पनीहरू</a></li>
-                    <li><a href="analysis.html">विश्लेषण</a></li>
-                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
-                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
-                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies.html" class="active">Companies</a></li>
+                    <li><a href="analysis.html">Analysis</a></li>
+                    <li><a href="watchlist.html">Watchlist</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </nav>
-            <div class="language-switcher">
-                <select id="language-select">
-                    <option value="ne" selected>नेपाली</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
             <div class="auth-buttons">
-                <a href="login.html" class="btn btn-outline">लगइन</a>
-                <a href="signup.html" class="btn btn-primary">साइनअप</a>
-            </div>
-            <!-- लगइन पछि देखिने प्रोफाइल ड्रपडाउन (पहिले लुकाइएको) -->
-            <div class="user-profile" style="display: none;">
-                <div class="profile-button" id="profile-button">
-                    <div class="profile-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <span class="profile-name">प्रयोगकर्ता</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="profile-dropdown" id="profile-dropdown">
-                    <a href="portfolio.html" class="dropdown-item">
-                        <i class="fas fa-chart-pie"></i>
-                        मेरो पोर्टफोलियो
-                    </a>
-                    <a href="watchlist.html" class="dropdown-item">
-                        <i class="fas fa-star"></i>
-                        मेरो वाचलिस्ट
-                    </a>
-                    <a href="settings.html" class="dropdown-item">
-                        <i class="fas fa-cog"></i>
-                        सेटिङहरू
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item" id="logout-button">
-                        <i class="fas fa-sign-out-alt"></i>
-                        लगआउट
-                    </a>
-                </div>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Signup</a>
             </div>
         </div>
     </header>
 
     <section class="page-header">
         <div class="container">
-            <h1>सूचीकृत कम्पनीहरू</h1>
-            <p>नेप्से र SEBON मा सूचीकृत सबै कम्पनीहरूको वास्तविक समयको मूल्य र विवरण</p>
+            <h1>Companies</h1>
+            <p>Information about companies listed on the NEPSE market</p>
         </div>
     </section>
 
-    <section class="companies-section">
+    <section class="top-gainers-losers">
         <div class="container">
-            <div class="companies-filter">
-                <div class="search-filter">
-                    <input type="text" id="company-search" placeholder="कम्पनी वा सिम्बोल खोज्नुहोस्...">
-                    <select id="sector-filter">
-                        <option value="">सबै क्षेत्रहरू</option>
-                        <!-- क्षेत्रहरू API बाट लोड हुनेछन् -->
-                    </select>
-                    <select id="sort-by">
-                        <option value="symbol">सिम्बोल अनुसार</option>
-                        <option value="ltp">मूल्य अनुसार</option>
-                        <option value="percent_change">परिवर्तन % अनुसार</option>
-                        <option value="qty">कारोबार मात्रा अनुसार</option>
-                    </select>
-                    <select id="sort-order">
-                        <option value="asc">आरोही क्रम</option>
-                        <option value="desc">अवरोही क्रम</option>
-                    </select>
-                </div>
-                <div class="market-status">
-                    <span id="market-status-indicator"></span>
-                    <span id="market-status-text"></span>
-                    <span id="last-updated"></span>
+            <div class="section-header">
+                <h2 class="section-title">Top Gainers & Losers</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="gainers">Top Gainers</button>
+                    <button class="tab-btn" data-tab="losers">Top Losers</button>
                 </div>
             </div>
-
-            <div class="companies-tabs">
-                <button class="tab-btn active" data-tab="all">सबै कम्पनीहरू</button>
-                <button class="tab-btn" data-tab="gainers">टप गेनर्स</button>
-                <button class="tab-btn" data-tab="losers">टप लुजर्स</button>
-            </div>
-
-            <div class="companies-table-container">
-                <div class="table-responsive">
-                    <table class="companies-table" id="companies-table">
+            
+            <div class="tab-content active" id="gainers">
+                <div class="stock-table">
+                    <table>
                         <thead>
                             <tr>
-                                <th>सिम्बोल</th>
-                                <th>कम्पनी</th>
-                                <th>क्षेत्र</th>
-                                <th>अन्तिम मूल्य</th>
-                                <th>परिवर्तन</th>
-                                <th>परिवर्तन %</th>
-                                <th>उच्च</th>
-                                <th>न्यून</th>
-                                <th>खुला</th>
-                                <th>कारोबार मात्रा</th>
-                                <th>कार्यहरू</th>
+                                <th>Symbol</th>
+                                <th>Company</th>
+                                <th>Price (Rs.)</th>
+                                <th>Change (%)</th>
+                                <th>Volume</th>
                             </tr>
                         </thead>
-                        <tbody id="companies-table-body">
-                            <!-- यहाँ JavaScript द्वारा डाटा लोड हुनेछ -->
-                            <tr>
-                                <td colspan="11" class="text-center">डाटा लोड हुँदैछ...</td>
-                            </tr>
+                        <tbody id="gainers-table">
+                            <!-- Will be filled by JavaScript -->
                         </tbody>
                     </table>
                 </div>
             </div>
+            
+            <div class="tab-content" id="losers">
+                <div class="stock-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company</th>
+                                <th>Price (Rs.)</th>
+                                <th>Change (%)</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="losers-table">
+                            <!-- Will be filled by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="pagination-container">
-                <div class="pagination" id="pagination">
-                    <!-- यहाँ JavaScript द्वारा पेजिनेसन लोड हुनेछ -->
-                </div>
-                <div class="items-per-page">
-                    <label for="items-per-page">प्रति पेज:</label>
-                    <select id="items-per-page">
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="200">200</option>
-                    </select>
-                </div>
+    <section class="all-companies">
+        <div class="container">
+            <h2 class="section-title">All Companies</h2>
+            <div class="search-filter">
+                <input type="text" id="company-search" placeholder="Search company...">
+                <select id="sector-filter">
+                    <option value="">All Sectors</option>
+                    <option value="banking">Banking</option>
+                    <option value="hydropower">Hydropower</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="telecom">Telecom</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div class="stock-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Company</th>
+                            <th>Sector</th>
+                            <th>Price (Rs.)</th>
+                            <th>Change (%)</th>
+                            <th>Analysis</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-companies-table">
+                        <!-- Will be filled by JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -164,21 +135,20 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>नेप्से ट्र्याकर</h2>
-                    <p>नेपालको स्टक मार्केटको लागि तपाईंको विश्वसनीय साथी</p>
+                    <h2>NEPSE Tracker</h2>
+                    <p>Your trusted companion for Nepal's stock market</p>
                 </div>
                 <div class="footer-links">
-                    <h3>द्रुत लिङ्कहरू</h3>
+                    <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">होम</a></li>
-                        <li><a href="companies.html">कम्पनीहरू</a></li>
-                        <li><a href="analysis.html">विश्लेषण</a></li>
-                        <li><a href="watchlist.html">मेरो वाचलिस्ट</a></li>
-                        <li><a href="about.html">हाम्रो बारेमा</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="analysis.html">Analysis</a></li>
+                        <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h3>सम्पर्क</h3>
+                    <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> katkutfilmsnepal@gmail.com</p>
                     <p><i class="fas fa-phone"></i> 9705886323</p>
                     <div class="social-links">
@@ -189,14 +159,14 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 नेप्से ट्र्याकर। सर्वाधिकार सुरक्षित।</p>
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JS फाइलहरू -->
+    <script src="js/app.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/api_service.js"></script>
     <script src="js/companies.js"></script>
 </body>
 </html> 

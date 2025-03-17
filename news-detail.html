@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Detail - NEPSE Tracker</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/Nepse Logo.png" alt="NEPSE Tracker Logo">
+                    <span>NEPSE Tracker</span>
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies.html">Companies</a></li>
+                    <li><a href="analysis.html">Analysis</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="watchlist.html">Watchlist</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="news-detail-container">
+            <div id="news-detail">
+                <!-- News content will be loaded dynamically -->
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p>Loading article...</p>
+                </div>
+            </div>
+
+            <!-- Related News -->
+            <section class="related-news">
+                <h3>Related Articles</h3>
+                <div id="related-news-container" class="related-news-container">
+                    <!-- Related news will be loaded dynamically -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2>Stay Updated with Market News</h2>
+                <p>Subscribe to our newsletter to receive the latest market news, analysis, and updates directly in your inbox.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <input type="email" id="newsletter-email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="NEPSE Tracker">
+                    <p>Your comprehensive platform for tracking and analyzing NEPSE stocks.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="market.html">Market</a></li>
+                            <li><a href="stocks.html">Stocks</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="tools.html">Tools</a></li>
+                            <li><a href="learn.html">Learn</a></li>
+                            <li><a href="about.html">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Market Analysis</a></li>
+                            <li><a href="#">Technical Indicators</a></li>
+                            <li><a href="#">Fundamental Analysis</a></li>
+                            <li><a href="#">IPO Information</a></li>
+                            <li><a href="#">Dividend History</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Contact Us</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-envelope"></i> info@nepsetracker.com</li>
+                            <li><i class="fas fa-phone"></i> +977 1 4XXXXXX</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/news-detail.js"></script>
+</body>
+</html> 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>लगइन - नेप्से स्टक मार्केट ट्र्याकर | Login - NEPSE Stock Market Tracker</title>
+    <title>Login - NEPSE Tracker</title>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -25,23 +25,17 @@
             </div>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html">होम</a></li>
-                    <li><a href="companies.html">कम्पनीहरू</a></li>
-                    <li><a href="analysis.html">विश्लेषण</a></li>
-                    <li><a href="watchlist.html">वाचलिस्ट</a></li>
-                    <li><a href="portfolio.html">पोर्टफोलियो</a></li>
-                    <li><a href="about.html">हाम्रो बारेमा</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="companies.html">Companies</a></li>
+                    <li><a href="analysis.html">Analysis</a></li>
+                    <li><a href="watchlist.html">Watchlist</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
                 </ul>
             </nav>
-            <div class="language-switcher">
-                <select id="language-select">
-                    <option value="ne" selected>नेपाली</option>
-                    <option value="en">English</option>
-                </select>
-            </div>
             <div class="auth-buttons">
-                <a href="login.html" class="btn btn-outline">लगइन</a>
-                <a href="signup.html" class="btn btn-primary">साइनअप</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
             </div>
         </div>
     </header>
@@ -50,39 +44,25 @@
         <section class="auth-section">
             <div class="auth-container">
                 <div class="auth-header">
-                    <h2 class="lang-ne">लगइन गर्नुहोस्</h2>
-                    <h2 class="lang-en">Login to Your Account</h2>
-                    <p class="lang-ne">आफ्नो पोर्टफोलियो र वाचलिस्ट व्यवस्थापन गर्न लगइन गर्नुहोस्</p>
-                    <p class="lang-en">Login to manage your portfolio and watchlist</p>
+                    <h2>Login to Your Account</h2>
+                    <p>Login to manage your portfolio and watchlist</p>
                 </div>
                 
                 <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="email-login">
-                        <span class="lang-ne">इमेल</span>
-                        <span class="lang-en">Email</span>
-                    </button>
-                    <button class="auth-tab" data-tab="mobile-login">
-                        <span class="lang-ne">मोबाइल</span>
-                        <span class="lang-en">Mobile</span>
-                    </button>
+                    <button class="auth-tab active" data-tab="email-login">Email</button>
+                    <button class="auth-tab" data-tab="mobile-login">Mobile</button>
                 </div>
                 
                 <div class="auth-forms">
-                    <!-- इमेल लगइन फर्म -->
+                    <!-- Email Login Form -->
                     <form id="email-login-form" class="auth-form active">
                         <div class="form-group">
-                            <label for="email-login">
-                                <span class="lang-ne">इमेल ठेगाना</span>
-                                <span class="lang-en">Email Address</span>
-                            </label>
+                            <label for="email-login">Email Address</label>
                             <input type="email" id="email-login" name="email" placeholder="example@mail.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="password-login">
-                                <span class="lang-ne">पासवर्ड</span>
-                                <span class="lang-en">Password</span>
-                            </label>
+                            <label for="password-login">Password</label>
                             <div class="password-input">
                                 <input type="password" id="password-login" name="password" placeholder="••••••••" required>
                                 <button type="button" class="toggle-password">
@@ -94,65 +74,36 @@
                         <div class="remember-forgot">
                             <div class="remember-me">
                                 <input type="checkbox" id="remember-me" name="remember">
-                                <label for="remember-me">
-                                    <span class="lang-ne">मलाई सम्झनुहोस्</span>
-                                    <span class="lang-en">Remember me</span>
-                                </label>
+                                <label for="remember-me">Remember me</label>
                             </div>
-                            <a href="#" class="forgot-password">
-                                <span class="lang-ne">पासवर्ड बिर्सनुभयो?</span>
-                                <span class="lang-en">Forgot password?</span>
-                            </a>
+                            <a href="#" class="forgot-password">Forgot password?</a>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
-                            <span class="lang-ne">लगइन गर्नुहोस्</span>
-                            <span class="lang-en">Login</span>
-                        </button>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                     
-                    <!-- मोबाइल लगइन फर्म -->
+                    <!-- Mobile Login Form -->
                     <form id="mobile-login-form" class="auth-form">
                         <div class="form-group">
-                            <label for="mobile-login">
-                                <span class="lang-ne">मोबाइल नम्बर</span>
-                                <span class="lang-en">Mobile Number</span>
-                            </label>
+                            <label for="mobile-login">Mobile Number</label>
                             <input type="tel" id="mobile-login" name="mobile" pattern="[0-9]{10}" placeholder="98XXXXXXXX" required>
-                            <small class="form-text">
-                                <span class="lang-ne">उदाहरण: 98XXXXXXXX</span>
-                                <span class="lang-en">Example: 98XXXXXXXX</span>
-                            </small>
+                            <small class="form-text">Example: 98XXXXXXXX</small>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">
-                            <span class="lang-ne">OTP पठाउनुहोस्</span>
-                            <span class="lang-en">Send OTP</span>
-                        </button>
+                        <button type="submit" class="btn btn-primary">Send OTP</button>
                     </form>
                 </div>
                 
                 <div class="social-login">
-                    <p>
-                        <span class="lang-ne">वा यसको साथ लगइन गर्नुहोस्</span>
-                        <span class="lang-en">Or login with</span>
-                    </p>
+                    <p>Or login with</p>
                     <button class="btn-google">
                         <i class="fab fa-google"></i>
-                        <span class="lang-ne">Google संग लगइन गर्नुहोस्</span>
-                        <span class="lang-en">Login with Google</span>
+                        Login with Google
                     </button>
                 </div>
                 
                 <div class="auth-footer">
-                    <p>
-                        <span class="lang-ne">खाता छैन?</span>
-                        <span class="lang-en">Don't have an account?</span>
-                        <a href="signup.html">
-                            <span class="lang-ne">साइनअप गर्नुहोस्</span>
-                            <span class="lang-en">Sign up</span>
-                        </a>
-                    </p>
+                    <p>Don't have an account? <a href="signup.html">Sign up</a></p>
                 </div>
             </div>
         </section>
@@ -166,38 +117,17 @@
                     <p>NEPSE Tracker</p>
                 </div>
                 <div class="footer-links">
-                    <h3>
-                        <span class="lang-ne">लिंकहरू</span>
-                        <span class="lang-en">Links</span>
-                    </h3>
+                    <h3>Links</h3>
                     <ul>
-                        <li><a href="index.html">
-                            <span class="lang-ne">होम</span>
-                            <span class="lang-en">Home</span>
-                        </a></li>
-                        <li><a href="companies.html">
-                            <span class="lang-ne">कम्पनीहरू</span>
-                            <span class="lang-en">Companies</span>
-                        </a></li>
-                        <li><a href="analysis.html">
-                            <span class="lang-ne">विश्लेषण</span>
-                            <span class="lang-en">Analysis</span>
-                        </a></li>
-                        <li><a href="watchlist.html">
-                            <span class="lang-ne">वाचलिस्ट</span>
-                            <span class="lang-en">Watchlist</span>
-                        </a></li>
-                        <li><a href="about.html">
-                            <span class="lang-ne">हाम्रो बारेमा</span>
-                            <span class="lang-en">About</span>
-                        </a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="companies.html">Companies</a></li>
+                        <li><a href="analysis.html">Analysis</a></li>
+                        <li><a href="watchlist.html">Watchlist</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h3>
-                        <span class="lang-ne">सम्पर्क</span>
-                        <span class="lang-en">Contact</span>
-                    </h3>
+                    <h3>Contact</h3>
                     <p><i class="fas fa-envelope"></i> info@nepsetracker.com</p>
                     <p><i class="fas fa-phone"></i> +977 9800000000</p>
                     <div class="social-icons">
@@ -209,10 +139,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NEPSE Tracker. 
-                    <span class="lang-ne">सर्वाधिकार सुरक्षित।</span>
-                    <span class="lang-en">All rights reserved.</span>
-                </p>
+                <p>&copy; 2023 NEPSE Tracker. All rights reserved.</p>
             </div>
         </div>
     </footer>

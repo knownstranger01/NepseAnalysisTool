@@ -1,16 +1,23 @@
 /* नेप्से ट्र्याकर - साझा CSS */
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #1a73e8;
-    --secondary-color: #34a853;
-    --danger-color: #ea4335;
-    --warning-color: #fbbc05;
-    --dark-color: #202124;
-    --light-color: #f8f9fa;
-    --gray-color: #5f6368;
-    --border-color: #dadce0;
-    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --primary-color: #1e40af;
+    --primary-light: #3b82f6;
+    --primary-dark: #1e3a8a;
+    --secondary-color: #059669;
+    --secondary-light: #10b981;
+    --secondary-dark: #047857;
+    --danger-color: #dc2626;
+    --warning-color: #f59e0b;
+    --dark-color: #111827;
+    --light-color: #f9fafb;
+    --gray-color: #4b5563;
+    --border-color: #e5e7eb;
+    --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease-in-out;
 }
 
 /* भाषा प्रदर्शन नियम */
@@ -98,10 +105,10 @@ html[lang="en"] .lang-en {
 }
 
 body {
-    font-family: 'Mukta', sans-serif;
+    font-family: 'Mukta', 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--dark-color);
-    background-color: #f5f5f5;
+    background-color: var(--light-color);
 }
 
 .container {
@@ -113,6 +120,11 @@ body {
 a {
     text-decoration: none;
     color: var(--primary-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-light);
 }
 
 ul {
@@ -144,12 +156,14 @@ header .container {
 .logo img {
     height: 40px;
     margin-right: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .logo span {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: -0.5px;
 }
 
 nav {
@@ -217,39 +231,44 @@ nav ul li a.active::after {
 /* अथेन्टिकेशन बटनहरू */
 .auth-buttons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-left: 20px;
 }
 
 .btn {
     display: inline-block;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 18px;
+    border-radius: 6px;
     font-weight: 500;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.9rem;
+    transition: var(--transition);
+    font-size: 0.95rem;
     border: none;
+    letter-spacing: 0.3px;
 }
 
 .btn-primary {
     background-color: var(--primary-color);
     color: #fff;
+    box-shadow: 0 2px 8px rgba(13, 71, 161, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #0d62d0;
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
 }
 
 .btn-outline {
     background-color: transparent;
     color: var(--primary-color);
-    border: 1px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color);
 }
 
 .btn-outline:hover {
-    background-color: rgba(26, 115, 232, 0.1);
+    background-color: rgba(13, 71, 161, 0.08);
+    transform: translateY(-2px);
 }
 
 /* प्रयोगकर्ता प्रोफाइल */
@@ -385,24 +404,50 @@ nav ul li a.active::after {
 footer {
     background-color: var(--dark-color);
     color: #fff;
-    padding: 40px 0 20px;
+    padding: 60px 0 30px;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
 }
 
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 40px;
+    margin-bottom: 40px;
 }
 
 .footer-logo h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #fff, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .footer-links h3, .footer-contact h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h3::after, .footer-contact h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--secondary-color);
 }
 
 .footer-links ul li {
@@ -461,165 +506,272 @@ footer {
     background-color: var(--primary-color);
 }
 
-/* पेज हेडर */
+/* पृष्ठ हेडर CSS */
 .page-header {
     background-color: var(--primary-color);
-    color: #fff;
-    padding: 60px 0;
+    color: white;
+    padding: 40px 0;
     text-align: center;
-    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, rgba(13, 71, 161, 0.9) 0%, rgba(0, 33, 113, 0.9) 100%);
+    z-index: 1;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 2;
 }
 
 .page-header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    font-weight: 700;
 }
 
 .page-header p {
     font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
     opacity: 0.9;
 }
 
-/* टेबल स्टाइल */
+/* टेबल CSS */
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
 }
 
 table th, table td {
-    padding: 12px 15px;
+    padding: 15px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
 }
 
 table th {
-    background-color: #f5f5f5;
+    background-color: var(--primary-light);
+    color: white;
     font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+table tr:nth-child(even) {
+    background-color: var(--light-color);
+}
+
+table tr {
+    transition: var(--transition);
 }
 
 table tr:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+    background-color: rgba(84, 110, 122, 0.1);
 }
 
-/* पोजिटिभ/नेगेटिभ भ्यालुहरू */
+table td {
+    border-bottom: 1px solid var(--border-color);
+}
+
 .positive {
     color: var(--secondary-color);
+    font-weight: 600;
 }
 
 .negative {
     color: var(--danger-color);
+    font-weight: 600;
 }
 
-/* रेस्पोन्सिभ स्टाइल */
+/* ट्याब CSS */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    padding: 12px 25px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-color);
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition);
+}
+
+.tab-btn:hover {
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* फर्म CSS */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* मोबाइल रेस्पोन्सिभ CSS */
 @media (max-width: 992px) {
-    .menu-toggle {
-        display: flex;
+    .page-header h1 {
+        font-size: 2.2rem;
     }
-
-    nav {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: #fff;
-        transition: left 0.3s;
-        box-shadow: var(--box-shadow);
+    
+    .page-header p {
+        font-size: 1.1rem;
     }
-
-    nav.active {
-        left: 0;
+    
+    .tabs {
+        flex-wrap: wrap;
     }
-
-    nav ul {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .language-switcher {
-        margin: 10px 0;
-    }
-
-    .auth-buttons {
-        margin-top: 20px;
+    
+    .tab-btn {
+        padding: 10px 20px;
     }
 }
 
 @media (max-width: 768px) {
-    header .container {
-        padding: 15px;
+    .page-header {
+        padding: 30px 0;
     }
-
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    .auth-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
-
-    .user-profile {
-        width: 100%;
-    }
-
-    .profile-dropdown {
-        width: 100%;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
+    
     .page-header h1 {
         font-size: 2rem;
     }
-
+    
+    .page-header p {
+        font-size: 1rem;
+    }
+    
     table th, table td {
-        padding: 10px;
-        font-size: 0.9rem;
+        padding: 12px 10px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
     }
 }
 
 @media (max-width: 576px) {
-    header .container {
-        padding: 10px;
-    }
-
-    nav ul {
-        padding: 10px;
-    }
-
-    .page-header {
-        padding: 40px 0;
-    }
-
     .page-header h1 {
         font-size: 1.8rem;
     }
-
-    .section-title {
-        font-size: 1.5rem;
+    
+    .page-header p {
+        font-size: 0.9rem;
+    }
+    
+    .tab-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    table th, table td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .form-container {
+        padding: 20px;
     }
 }
 
 /* स्क्रोल टप बटन */
 .scroll-top-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
@@ -629,8 +781,9 @@ table tr:hover {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s;
+    transition: var(--transition);
     z-index: 999;
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.3);
 }
 
 .scroll-top-btn.show {
@@ -639,20 +792,23 @@ table tr:hover {
 }
 
 .scroll-top-btn:hover {
-    background-color: #0d62d0;
+    background-color: var(--primary-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(13, 71, 161, 0.4);
 }
 
 /* हिरो सेक्सन - होम पेज */
 .home-hero-section {
-    background-color: #0a1929;
+    background-color: var(--primary-dark);
     color: #fff;
-    padding: 100px 0;
+    padding: 120px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
-    background-image: linear-gradient(rgba(10, 25, 41, 0.8), rgba(10, 25, 41, 0.9)), url('../images/stock-chart-bg.jpg');
+    background-image: linear-gradient(rgba(0, 33, 113, 0.85), rgba(0, 33, 113, 0.95)), url('../img/PIC-1.jpg');
     background-size: cover;
     background-position: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
 .home-hero-section::before {
@@ -676,17 +832,20 @@ table tr:hover {
 }
 
 .home-hero-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: -0.5px;
 }
 
 .home-hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    opacity: 0.9;
+    font-size: 1.6rem;
+    margin-bottom: 48px;
+    opacity: 0.95;
     line-height: 1.5;
+    font-weight: 300;
 }
 
 .home-hero-search {
@@ -697,37 +856,93 @@ table tr:hover {
 
 .home-hero-search input {
     width: 100%;
-    padding: 15px 20px;
+    padding: 18px 24px;
     border-radius: 50px;
     border: none;
     font-size: 1.1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     outline: none;
+    transition: var(--transition);
+}
+
+.home-hero-search input:focus {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .home-hero-search button {
     position: absolute;
-    right: 5px;
-    top: 5px;
-    bottom: 5px;
+    right: 6px;
+    top: 6px;
+    bottom: 6px;
     border: none;
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: white;
     border-radius: 50px;
-    padding: 0 25px;
+    padding: 0 30px;
     font-size: 1.1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(0, 168, 107, 0.3);
 }
 
 .home-hero-search button:hover {
-    background-color: #0d62d0;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 6px 15px rgba(0, 168, 107, 0.4);
+}
+
+/* कार्ड स्टाइल */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(149, 157, 165, 0.2);
+}
+
+.card-header {
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: var(--gray-color);
+}
+
+.card-body {
+    margin-bottom: 16px;
+}
+
+.card-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* रेस्पोन्सिभ स्टाइल होम हिरो सेक्सनको लागि */
 @media (max-width: 992px) {
     .home-hero-title {
         font-size: 3rem;
+    }
+    
+    .home-hero-section {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     }
 }
 
@@ -751,11 +966,16 @@ table tr:hover {
     .home-hero-search button {
         padding: 0 20px;
     }
+    
+    .card {
+        padding: 20px;
+    }
 }
 
 @media (max-width: 576px) {
     .home-hero-section {
         padding: 60px 0;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
     }
     
     .home-hero-title {
@@ -776,20 +996,269 @@ table tr:hover {
         padding: 0 15px;
         font-size: 1rem;
     }
+    
+    .card {
+        padding: 16px;
+    }
+    
+    .card-title {
+        font-size: 1.2rem;
+    }
 }
 
-/* एउटा भाषा मात्र देखाउने */
-<div class="content-ne">यो नेपालीमा मात्र देखिन्छ</div>
-<div class="content-en">This is shown only in English</div>
+/* एउटा भाषा मात्र देखाउने उदाहरण
+   <div class="content-ne">यो नेपालीमा मात्र देखिन्छ</div>
+   <div class="content-en">This is shown only in English</div>
+*/
 
-/* दुवै भाषा एकैपटक देखाउने */
-<div class="bilingual-content">
-    <div class="content-ne">नेप्से ट्र्याकर - नेपाल स्टक एक्सचेन्ज अनुगमन प्रणाली</div>
-    <div class="content-en">NEPSE Tracker - Nepal Stock Exchange Monitoring System</div>
-</div>
+/* दुवै भाषा एकैपटक देखाउने उदाहरण
+   <div class="bilingual-content">
+       <div class="content-ne">नेप्से ट्र्याकर - नेपाल स्टक एक्सचेन्ज अनुगमन प्रणाली</div>
+       <div class="content-en">NEPSE Tracker - Nepal Stock Exchange Monitoring System</div>
+   </div>
+*/
 
-/* इनलाइन तत्वहरू */
-<span class="bilingual-inline">
-    <span class="inline-ne">सम्पर्क</span>
-    <span class="inline-en">Contact</span>
-</span> 
+/* इनलाइन तत्वहरू उदाहरण
+   <span class="bilingual-inline">
+       <span class="inline-ne">सम्पर्क</span>
+       <span class="inline-en">Contact</span>
+   </span> 
+*/
+
+/* ग्रिड लेआउट */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.grid-container.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-container.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-container.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 992px) {
+    .grid-container.grid-3,
+    .grid-container.grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container.grid-2,
+    .grid-container.grid-3,
+    .grid-container.grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* बैज */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background-color: rgba(13, 71, 161, 0.1);
+    color: var(--primary-color);
+}
+
+.badge-secondary {
+    background-color: rgba(0, 168, 107, 0.1);
+    color: var(--secondary-color);
+}
+
+.badge-danger {
+    background-color: rgba(211, 47, 47, 0.1);
+    color: var(--danger-color);
+}
+
+.badge-warning {
+    background-color: rgba(255, 160, 0, 0.1);
+    color: var(--warning-color);
+}
+
+/* अलर्ट बक्स */
+.alert {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    border-left: 4px solid;
+}
+
+.alert-icon {
+    margin-right: 16px;
+    font-size: 1.2rem;
+}
+
+.alert-content {
+    flex: 1;
+}
+
+.alert-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.alert-message {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.alert-primary {
+    background-color: rgba(13, 71, 161, 0.05);
+    border-color: var(--primary-color);
+}
+
+.alert-primary .alert-icon {
+    color: var(--primary-color);
+}
+
+.alert-secondary {
+    background-color: rgba(0, 168, 107, 0.05);
+    border-color: var(--secondary-color);
+}
+
+.alert-secondary .alert-icon {
+    color: var(--secondary-color);
+}
+
+.alert-danger {
+    background-color: rgba(211, 47, 47, 0.05);
+    border-color: var(--danger-color);
+}
+
+.alert-danger .alert-icon {
+    color: var(--danger-color);
+}
+
+.alert-warning {
+    background-color: rgba(255, 160, 0, 0.05);
+    border-color: var(--warning-color);
+}
+
+.alert-warning .alert-icon {
+    color: var(--warning-color);
+}
+
+/* स्टेटिस्टिक्स कार्ड */
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(149, 157, 165, 0.2);
+}
+
+.stat-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+}
+
+.stat-card-primary .stat-card-icon {
+    background-color: rgba(13, 71, 161, 0.1);
+    color: var(--primary-color);
+}
+
+.stat-card-secondary .stat-card-icon {
+    background-color: rgba(0, 168, 107, 0.1);
+    color: var(--secondary-color);
+}
+
+.stat-card-danger .stat-card-icon {
+    background-color: rgba(211, 47, 47, 0.1);
+    color: var(--danger-color);
+}
+
+.stat-card-warning .stat-card-icon {
+    background-color: rgba(255, 160, 0, 0.1);
+    color: var(--warning-color);
+}
+
+.stat-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.stat-card-label {
+    font-size: 0.9rem;
+    color: var(--gray-color);
+    margin-bottom: 16px;
+}
+
+.stat-card-change {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.stat-card-change i {
+    margin-right: 4px;
+}
+
+/* सेक्सन पेडिङ */
+.section-padding {
+    padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-padding {
+        padding: 40px 0;
+    }
+}
+
+/* एउटा भाषा मात्र देखाउने उदाहरण
+   <div class="content-ne">यो नेपालीमा मात्र देखिन्छ</div>
+   <div class="content-en">This is shown only in English</div>
+*/
+
+/* दुवै भाषा एकैपटक देखाउने उदाहरण
+   <div class="bilingual-content">
+       <div class="content-ne">नेप्से ट्र्याकर - नेपाल स्टक एक्सचेन्ज अनुगमन प्रणाली</div>
+       <div class="content-en">NEPSE Tracker - Nepal Stock Exchange Monitoring System</div>
+   </div>
+*/
+
+/* इनलाइन तत्वहरू उदाहरण
+   <span class="bilingual-inline">
+       <span class="inline-ne">सम्पर्क</span>
+       <span class="inline-en">Contact</span>
+   </span> 
+*/ 
